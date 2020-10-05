@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 'use strict'
+import Database from './database'
+import i18n from '~/assets/i18n'
 const WebSocket = require('ws')
-const i18n = require('@/assets/i18n')
-const Database = require('./database')
 
 export default function websocket (server) {
   const wss = new WebSocket.Server({ server })
