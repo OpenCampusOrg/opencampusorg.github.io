@@ -1,7 +1,7 @@
 'use strict'
 import Vue from '../node_modules/vue/dist/vue.esm.browser.js'
 
-var lang, form, content
+var lang = '', form = undefined, content = undefined
 
 VANTA.NET({
     el: '#background', // element selector string or DOM object reference
@@ -52,3 +52,5 @@ form = new Vue({
         message: undefined
     }
 })
+
+export {lang, form, content}
