@@ -1,48 +1,41 @@
 {
   "name": "lelab.space",
   "version": "1.0.0",
-  "description": "The community website",
-  "main": "server/app.js",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint": "npm run lint:js"
+  },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.14.0",
-    "bootstrap": "^4.5.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/vue-fontawesome": "^2.0.0",
+    "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "bootstrap": "^4.5.0",
+    "bootstrap-vue": "^2.15.0",
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.5.1",
     "mdbootstrap": "^4.19.1",
+    "mdbvue": "^6.7.1",
     "mongodb": "^3.6.1",
-    "nuxt": "^2.14.4",
+    "nuxt": "^2.14.0",
     "popper.js": "^1.16.1",
     "spdy": "^4.0.2",
+    "three": "^0.120.1",
     "vanta": "^0.5.18",
     "vue": "^2.6.12",
     "ws": "^7.3.1"
   },
   "devDependencies": {
-    "assert": "^2.0.0"
-  },
-  "scripts": {
-    "test": "node server/app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Hackerspace-LeLab/lelab.space.git"
-  },
-  "keywords": [
-    "vue",
-    "nuxt",
-    "bootstrap",
-    "vanta",
-    "three",
-    "es2015",
-    "mongodb",
-    "websockets",
-    "hackerspace"
-  ],
-  "author": "Steve Huguenin-Elie",
-  "license": "MPL-2.0",
-  "bugs": {
-    "url": "https://github.com/Hackerspace-LeLab/lelab.space/issues"
-  },
-  "homepage": "https://github.com/Hackerspace-LeLab/lelab.space#readme"
+    "@nuxtjs/eslint-config": "^3.1.0",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.5.0",
+    "eslint-plugin-nuxt": "^1.0.0"
+  }
 }
