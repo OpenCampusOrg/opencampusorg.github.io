@@ -1,23 +1,31 @@
-const socket = io('http://localhost:3000')
+'use strict'
+const socket = new WebSocket('ws://localhost:3000')
 
-socket.on('connect', () => {
+socket.onopen = (event) => {
     console.log('client has sucessfully connected to server websocket')
-    if (form == null) socket.emit('newsletter', form.data)
-    socket.emit('translation', lang)
-})
-
-socket.on('content', data => {
-    console.log('content successfully received')
-    if (data != null) {
-        content.motto = data.motto
-        content.prop = data.prop
-        content.QA = data.QA
+    if (!form) {
+        form.handler = 'newsletter'
+        socket.send(JSON.stringify(form.data))
     }
-})
+    lang.handler = 'translation'
+    socket.send(JSON.stringify(lang))
+}
 
-socket.on('response', ack => { console.log(ack) })
+socket.onmessage = (message) => {
+    console.log('message received')
+    if (typeOf(message) == string) {
+        data = JSON.parse(message)
+        if (data.handler == 'content') {
+            console.log('content successfully received')
+            content.motto = data.motto
+            content.prop = data.prop
+            content.QA = data.QA
+        } else {
+            console.log('message:', message)
+        }
+    }
+}
 
-socket.on('disconnect', () => {
-    console.log('client is disconnected from server websocket')
-    socket.close()
-})
+socket.onclose = (event) => {
+    console.log('client is disconnected from websocket server')
+}
