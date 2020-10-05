@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style>
-  ::selection {
+  .navbar ::selection {
     color: none;
     background: none;
   }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <nav>
     <a href="#" class="twitter bg-primary text-light">
       <font-awesome-icon :icon="['fab','twitter']" size="2x" />
     </a>
@@ -13,11 +13,16 @@
     <a href="#" class="meetup bg-light">
       <font-awesome-icon :icon="['fab','meetup']" size="2x" />
     </a>
-  </div>
+  </nav>
 </template>
 
 <style scoped>
-div {
+  ::selection {
+    color: none;
+    background: none;
+  }
+
+nav {
   position: fixed;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -26,7 +31,7 @@ div {
 }
 
 /* Style the icon bar links */
-div a {
+nav a {
   display: block;
   text-align: center;
   padding: 16px;
