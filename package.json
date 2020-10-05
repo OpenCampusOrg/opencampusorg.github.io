@@ -8,6 +8,7 @@
     "bootstrap": "^4.5.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
+    "mdbootstrap": "^4.19.1",
     "mongodb": "^3.6.1",
     "popper.js": "^1.16.1",
     "vanta": "^0.5.18",

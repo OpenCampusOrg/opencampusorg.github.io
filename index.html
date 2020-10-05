@@ -10,10 +10,12 @@
   <link rel="preload" href="/node_modules/vanta/dist/vanta.net.min.js" as="script">
   <link rel="preload" href="/node_modules/@fortawesome/fontawesome-free/js/all.js" as="script">
   <link rel="preload" href="/node_modules/bootstrap/dist/js/bootstrap.js" as="script">
+  <link rel="preload" href="/node_modules/mdbootstrap/js/addons/flag.min.js" as="script">
 
   <!-- CSS stylesheets -->
   <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="/node_modules/mdbootstrap/css/addons/flag.min.css">
   <link rel="stylesheet" href="/css/style.css">
   
   <title>Rejoins le nouveau hackerspace</title>
@@ -23,12 +25,12 @@
   <span id="background" class="bg-body"></span>
   <header class="navbar">
     <nav class="d-flex flex-nowrap">
-      <i class="fas fa-home fa-2x"></i>
+      <i class="fas fa-tools fa-2x"></i>
       <a class="navbar-brand navbar-light" href="#">Hackerspace LeLab</a>
     </nav>
-    <nav class="navbar navbar-toggler">
-      <i class="fas fa-flag"></i>
-      <a id="lang" href="#">EN</a>
+    <nav class="navbar-toggler">
+      <i class="flag uk" id="flag"></i>
+      <a id="lang" class="navbar-brand navbar-light" href="#">EN</a>
     </nav>
   </header>
   <section id="content" class="container">
@@ -77,6 +79,7 @@
   <script src="/node_modules/jquery/dist/jquery.js"></script>
   <script src="/node_modules/popper.js/dist/umd/popper.js"></script>
   <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="/node_modules/mdbootstrap/js/addons/flag.min.js"></script>
   <!-- Website scripts -->
   <script src="/js/script.js" type="module"></script>
   <script src="/js/client.js" type="module"></script>

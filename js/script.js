@@ -28,14 +28,29 @@ new Vue({
     created() {
         lang = 'fr'
         $('html').attr('lang', lang)
+        if ($('.uk') == undefined) {
+            if ($('.flag') != undefined) {
+                $('.flag').addClass('uk')
+            } else {
+                $('.navbar-toggler').children().add(
+                    new document.createElement('i').addClass('flag').addClass('uk')
+                )
+            }
+        }
         translate()
 
-        $('#lang').click(() => {
+        $('.navbar-toggler').click(() => {
             if ($('#lang').text() == 'FR') {
                 $('#lang').text('EN')
+                $('.flag')
+                .removeClass('fr')
+                .addClass('uk')   
                 lang = 'fr'
             } else if ($('#lang').text() == 'EN') {
                 $('#lang').text('FR')
+                $('.flag')
+                .removeClass('uk')
+                .addClass('fr')
                 lang = 'en'
             } else {
                 throw new ReferenceError('Language not possible')
