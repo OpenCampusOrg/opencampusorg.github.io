@@ -32,7 +32,7 @@ class Database {
         }, 
         async (err, client) => {
             assert.equal(err, null)
-            console.log('Connected sucessfullly to server')
+            console.log('Connected sucessfully to database server')
             this.db = await client.db(dbName)
             await callback(client, dbName)
         })
@@ -43,7 +43,7 @@ class Database {
      * @param {string} url 
      * @param {string} dbName 
      * @param {function} callback 
-     * @returns Database
+     * @returns {Database}
      */
     static async connect(url = 'mongodb://localhost:21017', dbName = 'lelab', callback) {
         this.database = await new Database(url, dbName)
