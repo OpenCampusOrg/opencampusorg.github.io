@@ -1,32 +1,31 @@
-const server = require('http').createServer()
-const socket = require('socket.io')(server)
+const http = require('http2')
+const WebSocket = require('ws')
 
-const { insertMembers } = require('./query')
-const { connectDb } = require('./connect')
-const { translate } = require('./language')
+const wss = new WebSocket.Server({port: 3001})
+const server = http.createServer()
 
-socket.on('connection', client => {
-    client.on('newsletter', data => {
-        console.log('received data from client')
-        
-        client.emit('response', 'form data has been serialized')
+const { Database } = require('./database')
+const { Content } = require('./content')
+
+wss.on('connection', async (ws) => {
+    await ws.on('newsletter', async (user) => {
+        console.log('received user data')
         
         // serizalize data from newsletter
-        connectDb((client, dbName) => {
-            db = client.db(dbName)
-            insertMembers(db, data, result => {
-                console.log(result)
-            })
+        await Database.connect(async (client, dbName) => {
+            
         })
+
+        ws.emit('response', 'user data has been serialized')
     })
 
-    client.on('translation', lang => {
-        let content = translate(lang)
-        client.emit('content', content)
-        client.emit('response', 'text has been translated')
+    await ws.on('translation', async (lang) => {
+        let content = await Content.translate(lang)
+        ws.emit('content', content)
+        ws.emit('response', 'text has been translated')
     })
 
-    client.on('disconnect', () => {})
+    await ws.on('disconnect', () => {})
 })
 
 server.listen(3000)
