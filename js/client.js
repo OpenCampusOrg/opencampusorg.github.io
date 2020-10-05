@@ -2,13 +2,17 @@ const socket = io('http://localhost:3000')
 
 socket.on('connect', () => {
     console.log('client has sucessfully connected to server websocket')
-    socket.emit('newsletter', form.data)
+    if (form != null) socket.emit('newsletter', form.data)
     socket.emit('translation', lang)
 })
 
 socket.on('content', data => {
     console.log('content successfully received')
-    content.data = data
+    if (data != null) {
+        content.motto = data.motto
+        content.prop = data.prop
+        content.QA = data.QA
+    }
 })
 
 socket.on('response', ack => { console.log(ack) })
