@@ -11,14 +11,10 @@ socket.onopen = () => {
     }
 }
 
-socket.onmessage = () => {
-    console.log('Message received')
-}
-
 socket.onerror = (event) => {
     try {
-        if (typeof(event.target) == string) {
-            event.initEvent(event.target)
+        if (typeof(event.type) == 'string') {
+            event.initEvent(event.type, event.bubbles, event.cancelable)
         }
     } catch (e) {
         console.error(e)

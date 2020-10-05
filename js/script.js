@@ -28,7 +28,7 @@ const translate = () => {
         }
     }
     console.log('Attempt to retrieve translated content')
-    socket.addEventListener('open', (event) => {
+    socket.addEventListener('open', () => {
         while (socket.bufferedAmount != 0);
         let lang = $('html').attr('lang')
         socket.send(JSON.stringify({handler: 'translation', lang: lang}))
@@ -70,13 +70,14 @@ let form = new Vue({
 
 new Vue({
     created() {
-        animate()
-        translate()
-
         socket.addEventListener('message', (event) => {
-            if (typeof(event.data) == string) {
-                data = JSON.parse(event.data)
-                if (typeof(data) == string) {
+            if (event.type != 'string') {
+                let data = undefined
+                try {
+                    data = JSON.parse(event.data)
+                } catch (e) {
+                    data = event.data
+                } finally {
                     if (data.handler == 'content') {
                         console.log('Content successfully received')
                         content.motto = data.motto
@@ -84,8 +85,14 @@ new Vue({
                         content.QA = data.QA
                     } else {
                         console.log('Message:', event.data)
+                        if (event.data == 'user data has been serialized')
+                            for (element in form.data) {
+                               element = undefined
+                            }
                     }
                 }
+            } else {
+                console.log('Binary type message incoming...')
             }
         })
 
@@ -93,11 +100,14 @@ new Vue({
 
         $('#submit').click(() => {
             form.data.handler = 'newsletter'
-            socket.addEventListener('open', (event) => {
+            socket.addEventListener('open', () => {
                 while (socket.bufferedAmount != 0);
                 socket.send(JSON.stringify(form.data))
             })
             console.log('Sent form data to websocket server')
         })
+
+        translate()
+        animate()
     }
 })
