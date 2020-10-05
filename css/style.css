@@ -27,6 +27,11 @@
     width: 70%;
 }
 
+.btn, .btn-primary
+{
+    position: absolute;
+}
+
 div.icon-bar
 {
     position: fixed;
