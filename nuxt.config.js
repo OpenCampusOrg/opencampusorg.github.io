@@ -1,4 +1,5 @@
-
+import fs from 'fs'
+import path from 'path'
 export default {
   /*
   ** Nuxt rendering mode
@@ -63,12 +64,20 @@ export default {
     'mdbvue/nuxt',
     '@nuxtjs/pwa'
   ],
+  server: {
+    port: 8000,
+    host: '0.0.0.0',
+    https: {
+      key: fs.readFileSync(path.join(__dirname, '/api/keys/spdy-key.pem')),
+      cert: fs.readFileSync(path.join(__dirname, '/api/keys/spdy-fullchain.pem'))
+    }
+  },
   /*
    ** Server Middleware
    */
-  serverMiddleware: {
-    '/api': '~/api'
-  },
+  serverMiddleware: [
+    { path: '/api', handler: '~/api/app.js' }
+  ],
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
