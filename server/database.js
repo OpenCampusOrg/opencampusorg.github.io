@@ -4,7 +4,7 @@ const assert = require('assert')
 class Database {
 
     /**
-     * 
+     * constructor of Database class
      * @param {string} url 
      * @param {string} dbName 
      */
@@ -16,7 +16,7 @@ class Database {
         this.dbName = dbName
 
         // Connected client
-        this.client = null
+        this.client = undefined
     }
 
     /**
@@ -68,8 +68,14 @@ class Database {
         })
     }
     
-    async serialize(documents, callback) {
-        await insert(documents, 'documents', async (result) => {  
+    /**
+     * serialize Objects into documents
+     * @param {Array<Object>} documents 
+     * @param {string} category
+     * @param {function} callback 
+     */
+    async serialize(documents, category, callback) {
+        await insert(documents, category, async (result) => {  
             await callback(documents)
         })
     }
