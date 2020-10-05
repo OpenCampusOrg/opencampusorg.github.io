@@ -10,6 +10,7 @@ const app = express()
 const nuxt = new Nuxt(config)
 const host = '0.0.0.0' || process.env.HOST
 const port = process.env.PORT
+const websocket = require('./websocket')
 
 if (config.dev) {
   const builder = new Builder(nuxt)
@@ -39,5 +40,7 @@ const server = spdy.createServer({
     }
   }
 }, app)
+
+websocket()
 
 server.listen(port, host)

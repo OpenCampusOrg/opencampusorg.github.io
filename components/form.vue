@@ -1,16 +1,16 @@
 <template>
-  <form autocomplete="on" class="position-relative">
-    <label for="name" class="col-md-2">Prénom et nom</label>
+  <form autocomplete="on">
+    <label for="name" class="col-md-2">{{ content.fullname }}</label>
     <input
       v-model.lazy="form.name"
       class="col-md-4"
       name="name"
       type="text"
-      placeholder="Prénom Nom"
+      :placeholder="content.fullname"
       required
     >
     <br>
-    <label for="birth" class="col-md-2">Date de naissance</label>
+    <label for="birth" class="col-md-2">{{ content.birthday }}</label>
     <input
       v-model.lazy="form.birth"
       class="col-md-4"
@@ -20,50 +20,48 @@
       max="2007-12-31"
     >
     <br>
-    <label for="trade" class="col-md-2">Profession</label>
+    <label for="trade" class="col-md-2">{{ content.profession }}</label>
     <input
       v-model.lazy="form.trade"
       class="col-md-4"
       name="trade"
       type="text"
-      placeholder="profession ou études"
+      :placeholder="content.profession"
     >
     <br>
-    <label for="email" class="col-md-2">E-mail</label>
+    <label for="email" class="col-md-2">{{ content.email }}</label>
     <input
       v-model.lazy="form.email"
       class="col-md-4"
       name="email"
       type="email"
-      placeholder="adresse e-mail"
+      :placeholder="content.email"
       required
     >
     <br>
-    <label for="phone" class="col-md-2">No de Téléphone</label>
+    <label for="phone" class="col-md-2">{{ content.phonenumber }}</label>
     <input
       v-model.lazy="form.phone"
       class="col-md-4"
       name="phone"
       type="tel"
-      placeholder="fixe ou mobile"
+      :placeholder="content.phonenumber"
     >
     <br>
     <input v-model.lazy="form.funding" name="funding" type="checkbox">
     <label for="funding">
-      Je souhaite participer à la campagne participative et/ou
-      l'implantation
-      du projet à Neuchâtel.
+      {{ content.funding }}
     </label>
     <br>
     <textarea
       v-model.lazy="form.message"
       type="text"
       class="w-75 p-4 text-nowrap"
-      placeholder="C'est ici que vous pouvez communiquer vos attentes."
+      :placeholder="content.message"
     />
     <br>
     <br>
-    <input type="button" value="Envoyer" class="btn btn-primary" @click="submit()">
+    <input type="button" :value="content.send" class="btn btn-primary" @click="submit()">
     <br>
   </form>
 </template>
@@ -71,6 +69,12 @@
 <script>
 /* eslint-disable no-console */
 export default {
+  props: {
+    content: {
+      type: Object,
+      default () {}
+    }
+  },
   data () {
     return {
       socket: null,

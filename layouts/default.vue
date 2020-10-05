@@ -6,31 +6,42 @@
         <font-awesome-icon :icon="['fas','tools']" size="2x" />
         <a class="navbar-brand navbar-light" href="#">Hackerspace LeLab</a>
       </nav>
-      <National :country="country" :lang="language" @click.native="translate()" />
+      <National :country="country" :lang="lang" @click.native="translate()" />
     </header>
-    <Nuxt :lang="language" />
+    <Content :content="content" />
+    <span class="container position-relative text-center w-50 text-white">
+      <h2>{{ content.newsletter }}</h2>
+      <Form :content="content" />
+    </span>
+    <Nuxt />
     <footer />
   </div>
 </template>
 
 <script>
+import i18n from '~/assets/i18n'
 export default {
   data () {
     return {
-      language: 'EN',
+      lang: 'EN',
       country: 'uk'
+    }
+  },
+  computed: {
+    content () {
+      return i18n.translate(this.lang.toLowerCase())
     }
   },
   methods: {
     translate () {
-      if (this.language === 'FR') {
-        this.language = 'EN'
+      if (this.lang === 'FR') {
+        this.lang = 'EN'
         this.country = 'uk'
-      } else if (this.language === 'EN') {
-        this.language = 'FR'
+      } else if (this.lang === 'EN') {
+        this.lang = 'FR'
         this.country = 'fr'
       } else {
-        this.language = 'EN'
+        this.lang = 'EN'
         this.country = 'uk'
       }
     }
@@ -38,10 +49,20 @@ export default {
   head () {
     return {
       htmlAttrs: {
-        lang: this.language.toLowerCase()
+        lang: this.lang.toLowerCase()
       }
     }
   }
 }
-
 </script>
+
+<style>
+  ::selection {
+    color: none;
+    background: none;
+  }
+
+  .container {
+    background: none;
+  }
+</style>

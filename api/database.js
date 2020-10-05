@@ -3,12 +3,12 @@
 const assert = require('assert')
 const MongoClient = require('mongodb').MongoClient
 
-class Database {
+export default class Database {
   /**
-     * construct a Database object
-     * @param {string} url
-     * @param {string} dbName
-     */
+   * construct a Database object
+   * @param {string} url
+   * @param {string} dbName
+   */
   constructor (url = 'mongodb://localhost:21017', dbName = 'lelab') {
     // connection URL
     this.url = url
@@ -21,9 +21,9 @@ class Database {
   }
 
   /**
-     * Connect to Mongo database
-     * @param {Function} callback
-     */
+   * Connect to Mongo database
+   * @param {Function} callback
+   */
   async connect (callback) {
     await MongoClient.connect(this.url,
       {
@@ -31,7 +31,7 @@ class Database {
         useNewUrlParser: true
       },
       async (err, client) => {
-        assert.equal(err, null)
+        assert(err, null)
         console.log('Connected sucessfully to database server')
         this.db = await client.db(this.dbName)
         await callback(client, this.dbName)
@@ -39,12 +39,12 @@ class Database {
   }
 
   /**
-     * Connect to Mongo database
-     * @param {string} url
-     * @param {string} dbName
-     * @param {function} callback
-     * @returns {Database}
-     */
+   * Connect to Mongo database
+   * @param {string} url
+   * @param {string} dbName
+   * @param {function} callback
+   * @returns {Database}
+   */
   static async connect (url = 'mongodb://localhost:21017', dbName = 'lelab', callback) {
     this.database = await new Database(url, dbName)
     await this.database.connect(callback)
@@ -52,29 +52,29 @@ class Database {
   }
 
   /**
-     * Insert objects of a category into database
-     * @param {Array<Object>} objects
-     * @param {string} category
-     * @param {function} callback
-     */
+   * Insert objects of a category into database
+   * @param {Array<Object>} objects
+   * @param {string} category
+   * @param {function} callback
+   */
   async insert (objects, category, callback) {
     // Get the documents collection
     const collection = await this.db.collection(category)
 
     // Insert some documents
     await collection.insertMany(objects, async (err, result) => {
-      assert.equal(err, null)
+      assert(err, null)
       console.log('Inserted', collection, 'into the collection')
       await callback(result)
     })
   }
 
   /**
-     * Serialize Objects into documents
-     * @param {Array<Object>} documents
-     * @param {string} category
-     * @param {function} callback
-     */
+   * Serialize Objects into documents
+   * @param {Array<Object>} documents
+   * @param {string} category
+   * @param {function} callback
+   */
   async serialize (documents, category, callback) {
     await this.insert(documents, category, async (result) => {
       await callback(documents)
@@ -82,11 +82,9 @@ class Database {
   }
 
   /**
-     * close connection to database
-     */
+   * close connection to database
+   */
   async close () {
     await this.client.close()
   }
 }
-
-module.exports = { Database }

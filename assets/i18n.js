@@ -3,6 +3,7 @@ export default class i18n {
   /**
    * pass option to retrieve the content in the chose language
    * @param {String} lang
+   * @returns {i18n}
    */
   static translate (lang) {
     let content
@@ -17,7 +18,16 @@ export default class i18n {
           { question: 'Il existe déjà un fablab et repair café en ville.', answer: "Les hackerspaces sont des structures indépendantes des autorités au contraire des fablabs et ces derniers sont destinés à des projets d'envergure créatrice. Notre objectif est de développer des systèmes. Nous ne réparons pas d'électroménager, mais nos projets prennent en compte le respect des normes environnementales." },
           { question: 'Notre startup est basée à Microcity. Pouvons-nous profiter de vos services ?', answer: 'Oui, veuillez remplir le formulaire.' },
           { question: 'Notre startup recherche des locaux dans lesquels nous pourrions développer notre produit.', answer: "Les locaux permettront de travailler uniquement en commun. Veuillez nous contacter pour plus d'informations." }
-        ]
+        ],
+        newsletter: 'Lettre d\'informations',
+        fullname: 'Prénom et nom',
+        birthday: 'Date de naissance',
+        profession: 'Profession',
+        email: 'E-mail',
+        phonenumber: 'N° de téléphone',
+        funding: 'Je souhaite participer à la campagne participative et/ou l\'implantation du projet à Neuchâtel.',
+        message: 'C\'est ici que vous pouvez communiquer vos attentes et questions.',
+        send: 'Envoyer'
       }
     } else if (lang === 'en') {
       content = {
@@ -29,7 +39,16 @@ export default class i18n {
           { question: "There's already a fablab and repair café in town.", answer: 'Hackerspaces are structures independent of the authorities, unlike fablabs, and the latter are intended for large creative projects. Our goal is to develop systems. We do not repair appliances, but our projects take into account the respect of environmental standards.' },
           { question: 'Our startup is based in Microcity. Can we benefit from your services?', answer: 'Yes, please fill out the form.' },
           { question: 'Our startup is looking for premises where we could develop our product.', answer: 'The premises will allow us to work only together. Please contact us for more information.' }
-        ]
+        ],
+        newsletter: 'Newsletter',
+        fullname: 'Full name',
+        birthday: 'Birthday',
+        profession: 'Profession',
+        email: 'E-mail',
+        phonenumber: 'Phone number',
+        funding: 'I would like to contribute to your crowdfunding campaign and/or to the project setting in Neuchâtel.',
+        message: 'Here you can communicate your expectation and questions.',
+        send: 'Send'
       }
     }
 
