@@ -1,3 +1,5 @@
+'use strict'
+
 class Content {
     static translate(lang) {
         let content = [{}]
