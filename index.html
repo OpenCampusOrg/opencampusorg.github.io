@@ -22,7 +22,7 @@
 </head>
 
 <body>
-  <span id="background" class="bg-body"></span>
+  <span id="background" class="w-100 h-100 bg-body position-fixed"></span>
   <header class="navbar">
     <nav class="d-flex flex-nowrap">
       <i class="fas fa-tools fa-2x"></i>
@@ -33,7 +33,7 @@
       <a id="lang" class="navbar-brand navbar-light" href="#">FR</a>
     </nav>
   </header>
-  <section id="content" class="container">
+  <section id="content" class="container text-white position-relative">
     <h1>{{ motto }}</h1>
     <h2>{{ prop }}</h2>
     <ul class="container list-group list-group-item" >
@@ -42,9 +42,9 @@
         <p>{{ object.answer }}</p>
     </ul>
   </section>
-  <span id="form" class="container text-center">
+  <span id="form" class="container text-center w-50 text-white">
     <h2>Bulletin d'informations</h2>
-    <form action="#" autocomplete="on">
+    <form action="#" autocomplete="on" class="position-relative">
       <label for="name" class="col-md-2">Prénom et nom</label><input class="col-md-4" name="name" type="text"
         placeholder="Prénom Nom" v-model.lazy="name" required><br>
       <label for="birth" class="col-md-2">Date de naissance</label><input class="col-md-4" name="birth"
@@ -57,17 +57,17 @@
         placeholder="fixe ou mobile" v-model.lazy="phone"><br>
       <input id="funding" v-model.lazy="funding" type="checkbox"> <label for="funding">Je souhaite participer à la campagne participative et/ou
         l'implantation
-        du hackerspace à Neuchâtel.</label><br>
-      <textarea type="text" v-model.lazy="message" class="d-flex w-100 p-4 text-nowrap"
+        du projet à Neuchâtel.</label><br>
+      <textarea type="text" v-model.lazy="message" class="w-75 p-4 text-nowrap"
         placeholder="C'est ici que vous pouvez communiquer vos attentes."></textarea><br><br>
-      <input type="submit" value="Envoyer" class="btn btn-primary" id="submit"><br>
+      <input type="button" value="Envoyer" class="btn btn-primary" id="submit"><br>
     </form>
   </span>
-  <div class="icon-bar">
-    <a href="#" class="twitter"><i class="fab fa-twitter fa-2x"></i></a>
-    <a href="#" class="telegram"><i class="fab fa-telegram fa-2x"></i></a>
-    <a href="#" class="irc"><i class="fas fa-hashtag"></i>IRC</a>
-    <a href="#" class="meetup"><i class="fab fa-meetup fa-2x"></i></a>
+  <div class="icon-bar position-fixed">
+    <a href="#" class="twitter bg-primary text-light"><i class="fab fa-twitter fa-2x"></i></a>
+    <a href="#" class="telegram bg-info text-light"><i class="fab fa-telegram fa-2x"></i></a>
+    <a href="#" class="irc bg-dark"><i class="fas fa-hashtag"></i>IRC</a>
+    <a href="#" class="meetup bg-light"><i class="fab fa-meetup fa-2x"></i></a>
   </div>
   <footer></footer>
   <!-- JavaScript -->
