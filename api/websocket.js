@@ -1,20 +1,20 @@
-/* eslint-disable no-console */
 'use strict'
-import Database from './database'
-import i18n from '~/assets/i18n'
+import consola from 'consola'
+import i18n from '../assets/i18n'
 const WebSocket = require('ws')
+const Database = require('./database')
 
-export default function websocket (server) {
-  const wss = new WebSocket.Server({ server })
+function websocket (serverOptions) {
+  const wss = new WebSocket.Server(serverOptions)
 
   wss.on('connection', (ws) => {
-    console.log('client connected through websocket')
+    consola.log('client connected through websocket')
 
     ws.on('message', (message) => {
-      console.log('Message received')
+      consola.log('Message received')
       const data = JSON.parse(message)
       if (data.handler === 'newsletter') {
-        console.log('User data received')
+        consola.log('User data received')
         // serialize data from newsletter
         Database.connect((client, dbName) => {
         })
@@ -25,24 +25,26 @@ export default function websocket (server) {
         ws.send(JSON.stringify(content))
         ws.send('text has been translated')
       } else {
-        console.log('Message:', message)
+        consola.log('Message:', message)
       }
     })
 
     ws.on('error', (error) => {
-      console.error(error)
+      consola.error(error)
     })
 
     ws.on('close', () => {
-      console.log('client disconnected from websocket')
+      consola.log('client disconnected from websocket')
     })
   })
 
   wss.on('error', (error) => {
-    console.error(error)
+    consola.error(error)
   })
 
   wss.on('close', () => {
-    console.log('closed websocket')
+    consola.log('closed websocket')
   })
 }
+
+module.exports = websocket

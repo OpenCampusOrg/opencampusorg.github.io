@@ -67,7 +67,7 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
+import consola from 'consola'
 export default {
   props: {
     content: {
@@ -94,9 +94,9 @@ export default {
 
     this.socket.onopen = () => {
       if (this.socket.readyState === WebSocket.CONNECTING) {
-        console.log('CONNECTING TCP client to websocket server')
+        consola.log('CONNECTING TCP client to websocket server')
         if (this.socket.readyState === WebSocket.OPEN) {
-          console.log('TCP connection to websocket server is OPEN')
+          consola.log('TCP connection to websocket server is OPEN')
         }
       }
     }
@@ -106,9 +106,9 @@ export default {
 
     this.socket.onclose = (event) => {
       if (this.socket.readyState === WebSocket.CLOSING) {
-        console.log('Server is CLOSING TCP connection')
+        consola.log('Server is CLOSING TCP connection')
         if (this.socket.readyState === WebSocket.CLOSED) {
-          console.log('TCP connection to websocket server is CLOSED')
+          consola.log('TCP connection to websocket server is CLOSED')
           if (typeof event.reason !== 'undefined') {
             alert(event.reason)
           } else {
@@ -132,7 +132,7 @@ export default {
           }
         }
       } else {
-        console.log('Binary type message incoming is not managed...')
+        consola.log('Binary type message incoming is not managed...')
       }
     })
   },
@@ -143,7 +143,7 @@ export default {
         while (this.socket.bufferedAmount !== 0) { ; }
         this.socket.send(JSON.stringify(this.form.data))
       }
-      console.log('Sent form data to websocket server')
+      consola.log('Sent form data to websocket server')
     }
   }
 }

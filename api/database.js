@@ -1,9 +1,9 @@
-/* eslint-disable no-console */
 'use strict'
+import consola from 'consola'
 const assert = require('assert')
 const MongoClient = require('mongodb').MongoClient
 
-export default class Database {
+module.exports = class Database {
   /**
    * construct a Database object
    * @param {string} url
@@ -32,7 +32,7 @@ export default class Database {
       },
       async (err, client) => {
         assert(err, null)
-        console.log('Connected sucessfully to database server')
+        consola.log('Connected sucessfully to database server')
         this.db = await client.db(this.dbName)
         await callback(client, this.dbName)
       })
@@ -64,7 +64,7 @@ export default class Database {
     // Insert some documents
     await collection.insertMany(objects, async (err, result) => {
       assert(err, null)
-      console.log('Inserted', collection, 'into the collection')
+      consola.log('Inserted', collection, 'into the collection')
       await callback(result)
     })
   }
