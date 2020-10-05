@@ -28,6 +28,8 @@ socket.onerror = (err) => {
 
 socket.onclose = () => {
     console.log('client is disconnected from websocket server')
+    alert('You have been disconnected. Please restart the page\n\n\
+Vous avez été déconnecté. Veuillez SVP recharger la page')
 }
 
 export {socket}
