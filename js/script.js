@@ -1,3 +1,6 @@
+'use strict'
+import Vue from '../node_modules/vue/dist/vue.esm.browser.js'
+
 var lang, form, content
 
 VANTA.NET({
@@ -26,7 +29,6 @@ new Vue({
                 throw new ReferenceError('Language not possible')
             }
             $('html').attr('lang', lang)
-            socket.emit('translation', lang)
         })
     }
 })
@@ -34,19 +36,19 @@ new Vue({
 content = new Vue({
     el: '#content',
     data: {
-        motto: null, prop: null, QA: null
+        motto: undefined, prop: undefined, QA: undefined
     }
 })
 
 form = new Vue({
     el: '#form',
     data: {
-        name: '',
-        birth: '2007-01-01',
-        trade: '',
-        email: '',
-        phone: '',
-        funding: false,
-        message: ''
+        name: undefined,
+        birth: undefined,
+        trade: undefined,
+        email: undefined,
+        phone: undefined,
+        funding: undefined,
+        message: undefined
     }
 })
