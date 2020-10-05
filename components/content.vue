@@ -18,16 +18,37 @@ export default {
       type: Object,
       default () {}
     }
+  },
+  data () {
+    return {
+      colors: ['list-group-item-primary', 'list-group-item-secondary', 'list-group-item-danger', 'list-group-item-warning', 'list-group-item-info', 'list-group-item-light', 'list-group-item-dark']
+    }
+  },
+  mounted () {
+    this.setQAColor()
+  },
+  updated () {
+    this.setQAColor()
+  },
+  methods: {
+    setQAColor () {
+      for (let i = 0; i < this.content.QA.length; ++i) {
+        i %= this.colors.length
+        document.getElementsByTagName('li').item(i).classList.add(this.colors[i])
+      }
+    }
   }
 }
 </script>
 
 <style scoped>
-h1,h2 {
+h1, h2 {
   padding: 0.5em;
 }
 
-li {
+.list-group-item, .list-group-item p {
   display: block;
+  font-size: x-large;
+  opacity: 80%;
 }
 </style>

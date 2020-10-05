@@ -25,8 +25,6 @@
 nav {
   position: fixed;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -34,7 +32,7 @@ nav {
 nav a {
   display: block;
   text-align: center;
-  padding: 16px;
+  padding: 1em;
   transition: all 0.3s ease;
   font-size: 20px;
 }
