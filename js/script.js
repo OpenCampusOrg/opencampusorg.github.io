@@ -2,21 +2,22 @@ var lang, form, content
 
 new Vue({
     created() {
-        const html = document.documentElement
         lang = 'fr'
+        $('html').attr('lang', lang)
+
         $('#lang').click(() => {
-            if (lang == 'en') {
-                $(this).text = 'FR'
+            if ($('#lang').text() == 'FR') {
+                $('#lang').text('EN')
                 lang = 'fr'
-            } else if (lang = 'fr') {
-                $(this).text = 'EN'
+            } else if ($('#lang').text() == 'EN') {
+                $('#lang').text('FR')
                 lang = 'en'
             } else {
-                $(this).text = 'FR'
-                lang = 'fr'
+                throw new ReferenceError('Language not possible')
             }
+            $('html').attr('lang', lang)
+            socket.emit('translation', lang)
         })
-        html.setAttribute('lang', lang)
     }
 })
 

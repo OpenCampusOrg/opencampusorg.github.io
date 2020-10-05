@@ -1,5 +1,5 @@
 var translate = (lang) => {
-    var content = [{}]
+    let content = [{}]
 
     if (lang == 'fr') {
         content = {
@@ -14,8 +14,20 @@ var translate = (lang) => {
             ]
         }
     } else if (lang == 'en') {
-        content = [{}]
+        content = {
+            motto: "Become a member of the LeLab hackerspace!",
+            prop: "The hackerspace LeLab is a citizen initiative from Neuchâtel that aims to unite innovators, inventors and startups in order to develop and design innovative projects together.",
+            QA: [
+                { question: "What is a hackerspace?", answer: "A hackerspace consists of an open space, an active community and prototyping machines. The idea is to propose the development of projects together and to provide a prototyping infrastructure for all members. We want to enable people to move from an idea to a concept, and from concept to realization." },
+                { question: "[I have a great idea, but I don't know much about it.", answer: "That's good news. You don't have to be an engineer to join us. We would be very happy to get to know you and show you how to achieve your goal." },
+                { question: "There's already a fablab and repair café in town.", answer: "Hackerspaces are structures independent of the authorities, unlike fablabs, and the latter are intended for large creative projects. Our goal is to develop systems. We do not repair appliances, but our projects take into account the respect of environmental standards." },
+                { question: "Our startup is based in Microcity. Can we benefit from your services?", answer: "Yes, please fill out the form." },
+                { question: "Our startup is looking for premises where we could develop our product.", answer: "The premises will allow us to work only together. Please contact us for more information." }
+            ]
+        }
     }
 
-    module.exports = { content, translate }
+    return content
 }
+
+module.exports = { translate }

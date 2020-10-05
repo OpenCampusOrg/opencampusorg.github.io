@@ -1,4 +1,4 @@
-const assert = require("assert")
+const assert = require('assert')
 
 // should use generics here
 const insertMembers = function(db, members, callback) {
