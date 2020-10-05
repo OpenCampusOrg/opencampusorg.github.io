@@ -2,7 +2,7 @@ const socket = io('http://localhost:3000')
 
 socket.on('connect', () => {
     console.log('client has sucessfully connected to server websocket')
-    if (form != null) socket.emit('newsletter', form.data)
+    if (form == null) socket.emit('newsletter', form.data)
     socket.emit('translation', lang)
 })
 

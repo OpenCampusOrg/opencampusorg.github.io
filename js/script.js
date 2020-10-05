@@ -1,5 +1,15 @@
 var lang, form, content
 
+VANTA.NET({
+    el: '#background', // element selector string or DOM object reference
+    color: 0x00adee,
+    backgroundColor: 0x0,
+    points: 3,
+    maxDistance: 60,
+    spacing: 35,
+    showDots: true
+  })
+
 new Vue({
     created() {
         lang = 'fr'
