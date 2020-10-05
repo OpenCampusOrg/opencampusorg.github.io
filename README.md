@@ -33,8 +33,6 @@ You can also start the server manually:
 $ node server/app.js &
 ```
 
-The HTTP port is configured on the port `5500` by default.
-
-To run this website, you need to have your port `3000` free on your localhost, otherwise you will need to redirect the websocket service to the port `3001`.
+The HTTP port is configured on the port `3000` by default. If this is port is busy, just switch the port at the end of [server/app.js] from `3000` to another value (`3300`, `3330` or `3333`).
 
 In later releases, the website should be able to run from ``node.js`` instance using [express.js](https://expressjs.com) and [nuxt.js](https://nuxtjs.com). The latter is replacing a template system such as `ejs` that is less popular in the developer community. 
