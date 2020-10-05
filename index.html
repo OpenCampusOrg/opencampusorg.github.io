@@ -9,7 +9,8 @@
   <!-- JS preloading -->
   <link rel="preload" href="/node_modules/vue/dist/vue.min.js" as="script">
   <link rel="preload" href="/node_modules/@fortawesome/fontawesome-free/js/all.min.js" as="script">
-  <link rel="preload" href="/node_modules/bootstrap/dist/js/bootstrap.min.js.map" as="script">
+  <link rel="preload" href="/node_modules/bootstrap/dist/js/bootstrap.min.js" as="script">
+  <link rel="preload" href="/node_modules/socket.io-client/dist/socket.io.slim.js" as="script">
   <link rel="preload" href="/js/script.js" as="script">
   <link rel="preload" href="/js/client.js" as="script">
 
@@ -37,30 +38,30 @@
     <h1>{{ motto }}</h1>
     <h2>{{ proposition }}</h2>
     <ul class="container list-group list-group-item" >
-      <li class="col-sm" v-for="map in QA">
-        <p>{{ map.question }}</p>
-        <p>{{ map.answer }}</p>
+      <li class="col-sm" v-for="object in QA">
+        <p>{{ object.question }}</p>
+        <p>{{ object.answer }}</p>
     </ul>
   </section>
   <div id="form" class="container text-center">
     <h2>Bulletin d'informations</h2>
     <form action="#" autocomplete="on">
-      <label for="name" v-model.lazy="name" class="col-md-2">Prénom et nom</label><input class="col-md-4" name="name" type="text"
+      <label for="name" v-model="name" class="col-md-2">Prénom et nom</label><input class="col-md-4" name="name" type="text"
         placeholder="Prénom Nom" required><br>
-      <label for="birth" v-model.lazy.number="birth" class="col-md-2">Date de naissance</label><input class="col-md-4" name="birth"
-        type="date" min="1901-01-01" max="2007-01-01" ><br>
-      <label for="trade" v-model.lazy="trade" class="col-md-2">Profession</label><input class="col-md-4" name="trade" type="text"
+      <label for="birth" v-model.date="birth" class="col-md-2">Date de naissance</label><input class="col-md-4" name="birth"
+        type="date" min="1943-01-01" max="2007-12-31" ><br>
+      <label for="trade" v-model="trade" class="col-md-2">Profession</label><input class="col-md-4" name="trade" type="text"
         placeholder="profession ou études"><br>
-      <label for="email" v-model.lazy="email" class="col-md-2">E-mail</label><input class="col-md-4" name="email" type="email"
+      <label for="email" v-model="email" class="col-md-2">E-mail</label><input class="col-md-4" name="email" type="email"
         placeholder="adresse e-mail" required><br>
-      <label for="phone" v-model.lazy="phone" class="col-md-2">No de Téléphone</label><input class="col-md-4" name="phone" type="tel"
+      <label for="phone" v-model="phone" class="col-md-2">No de Téléphone</label><input class="col-md-4" name="phone" type="tel"
         placeholder="fixe ou mobile"><br>
-      <input id="funding" v-model.lazy="funding" type="checkbox"> <label for="funding">Je souhaite participer à la campagne participative et/ou
+      <input id="funding" v-model="funding" type="checkbox"> <label for="funding">Je souhaite participer à la campagne participative et/ou
         l'implantation
         du hackerspace à Neuchâtel.</label><br>
-      <textarea type="text" v-model.lazy="message" class="d-flex w-100 p-4 text-nowrap"
+      <textarea type="text" v-model="message" class="d-flex w-100 p-4 text-nowrap"
         placeholder="C'est ici que vous pouvez communiquer vos attentes."></textarea><br><br>
-      <input type="submit" value="Envoyer" class="btn btn-primary" @click="addToMailListing"><br>
+      <input type="submit" value="Envoyer" class="btn btn-primary"><br>
     </form>
   </div>
   <div class="icon-bar">
@@ -71,14 +72,16 @@
   </div>
   <footer></footer>
   <!-- JavaScript -->
-  <script src="/js/script.js"></script>
-  <script src="/js/client.js"></script>
   <script src="/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+  <script src="/node_modules/socket.io-client/dist/socket.io.slim.js"></script>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
   <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
-  <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js.map"></script>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- Website scripts -->
+  <script src="/js/script.js"></script>
+  <script src="/js/client.js"></script>
 </body>
 
 </html>

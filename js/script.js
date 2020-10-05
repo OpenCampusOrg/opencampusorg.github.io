@@ -1,7 +1,9 @@
+var lang, form, content
+
 new Vue({
     created() {
         const html = document.documentElement
-        let lang = html.getAttribute('lang')
+        lang = 'fr'
         $('#lang').click(() => {
             if (lang == 'en') {
                 $(this).text = 'FR'
@@ -15,28 +17,25 @@ new Vue({
             }
         })
         html.setAttribute('lang', lang)
-        module.exports = { lang }
     }
 })
 
-const content = new Vue({
+content = new Vue({
     el: '#content',
     data: {
-        motto, proposition, QA: [{ question, answer }]
+        motto: null, proposition: null, QA: null
     }
 })
 
-const form = new Vue({
+form = new Vue({
     el: '#form',
     data: {
         name: '',
-        birth: Date.now().toString(),
-        trade: '', 
-        email: '', 
-        phone: '', 
-        funding: false, 
+        birth: '2007-01-01',
+        trade: '',
+        email: '',
+        phone: '',
+        funding: false,
         message: ''
     }
 })
-
-module.exports += { content, form }
