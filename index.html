@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- JS preloading -->
+  <link rel="preload" href="/node_modules/vue/dist/vue.min.js" as="script">
+  <link rel="preload" href="/node_modules/@fortawesome/fontawesome-free/js/all.min.js" as="script">
+  <link rel="preload" href="/node_modules/bootstrap/dist/js/bootstrap.min.js.map" as="script">
+  <link rel="preload" href="/js/script.js" as="script">
+  <link rel="preload" href="/js/client.js" as="script">
+
+  <!-- CSS stylesheets -->
+  <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <title>Rejoins le nouveau hackerspace</title>
+  <script src="/node_modules/vue/dist/vue.min.js"></script>
+</head>
+
+<body class="bg-body">
+  <header class="navbar">
+    <nav class="d-flex flex-nowrap">
+      <i class="fas fa-home fa-2x"></i>
+      <a class="navbar-brand navbar-light" href="#">Hackerspace LeLab</a>
+    </nav>
+    <nav class="navbar navbar-toggler">
+      <i class="fas fa-flag"></i>
+      <a id="lang" href="#">EN</a>
+    </nav>
+  </header>
+  <section id="content" class="container">
+    <h1>{{ motto }}</h1>
+    <h2>{{ proposition }}</h2>
+    <ul class="container list-group list-group-item" >
+      <li class="col-sm" v-for="map in QA">
+        <p>{{ map.question }}</p>
+        <p>{{ map.answer }}</p>
+    </ul>
+  </section>
+  <div id="form" class="container text-center">
+    <h2>Bulletin d'informations</h2>
+    <form action="#" autocomplete="on">
+      <label for="name" v-model.lazy="name" class="col-md-2">Prénom et nom</label><input class="col-md-4" name="name" type="text"
+        placeholder="Prénom Nom" required><br>
+      <label for="birth" v-model.lazy.number="birth" class="col-md-2">Date de naissance</label><input class="col-md-4" name="birth"
+        type="date" min="1901-01-01" max="2007-01-01" ><br>
+      <label for="trade" v-model.lazy="trade" class="col-md-2">Profession</label><input class="col-md-4" name="trade" type="text"
+        placeholder="profession ou études"><br>
+      <label for="email" v-model.lazy="email" class="col-md-2">E-mail</label><input class="col-md-4" name="email" type="email"
+        placeholder="adresse e-mail" required><br>
+      <label for="phone" v-model.lazy="phone" class="col-md-2">No de Téléphone</label><input class="col-md-4" name="phone" type="tel"
+        placeholder="fixe ou mobile"><br>
+      <input id="funding" v-model.lazy="funding" type="checkbox"> <label for="funding">Je souhaite participer à la campagne participative et/ou
+        l'implantation
+        du hackerspace à Neuchâtel.</label><br>
+      <textarea type="text" v-model.lazy="message" class="d-flex w-100 p-4 text-nowrap"
+        placeholder="C'est ici que vous pouvez communiquer vos attentes."></textarea><br><br>
+      <input type="submit" value="Envoyer" class="btn btn-primary" @click="addToMailListing"><br>
+    </form>
+  </div>
+  <div class="icon-bar">
+    <a href="#" class="twitter"><i class="fab fa-twitter fa-2x"></i></a>
+    <a href="#" class="telegram"><i class="fab fa-telegram fa-2x"></i></a>
+    <a href="#" class="irc"><i class="fas fa-hashtag"></i>IRC</a>
+    <a href="#" class="meetup"><i class="fab fa-meetup fa-2x"></i></a>
+  </div>
+  <footer></footer>
+  <!-- JavaScript -->
+  <script src="/js/script.js"></script>
+  <script src="/js/client.js"></script>
+  <script src="/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
+  <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js.map"></script>
+</body>
+
+</html>
