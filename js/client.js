@@ -1,14 +1,21 @@
 'use strict'
+import {lang, form, content} from './script.js'
+
 const socket = new WebSocket('ws://localhost:3000')
 
-socket.onopen = (event) => {
+socket.onopen = () => {
     console.log('client has sucessfully connected to server websocket')
     if (!form) {
-        form.handler = 'newsletter'
-        socket.send(JSON.stringify(form.data))
+        form.data.handler = 'newsletter'
+        setInterval(function() {
+            if (socket.bufferedAmount == 0)
+                socket.send(JSON.stringify(form.data))
+        }, 50)
     }
-    lang.handler = 'translation'
-    socket.send(JSON.stringify(lang))
+    setInterval(function() {
+        if (socket.bufferedAmount == 0)
+            socket.send(JSON.stringify({handler: 'translation', lang: lang}))
+    }, 50)
 }
 
 socket.onmessage = (message) => {
@@ -26,6 +33,10 @@ socket.onmessage = (message) => {
     }
 }
 
-socket.onclose = (event) => {
+socket.onerror = (err) => {
+    console.error(err)
+}
+
+socket.onclose = () => {
     console.log('client is disconnected from websocket server')
 }
