@@ -23,7 +23,7 @@ new Vue({
 content = new Vue({
     el: '#content',
     data: {
-        motto: null, proposition: null, QA: null
+        motto: null, prop: null, QA: null
     }
 })
 

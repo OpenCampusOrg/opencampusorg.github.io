@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -20,7 +19,6 @@
   <link rel="stylesheet" href="/css/style.css">
   
   <title>Rejoins le nouveau hackerspace</title>
-  <script src="/node_modules/vue/dist/vue.min.js"></script>
 </head>
 
 <body class="bg-body">
@@ -36,7 +34,7 @@
   </header>
   <section id="content" class="container">
     <h1>{{ motto }}</h1>
-    <h2>{{ proposition }}</h2>
+    <h2>{{ prop }}</h2>
     <ul class="container list-group list-group-item" >
       <li class="col-sm" v-for="object in QA">
         <p>{{ object.question }}</p>
@@ -72,6 +70,7 @@
   </div>
   <footer></footer>
   <!-- JavaScript -->
+  <script src="/node_modules/vue/dist/vue.min.js"></script>
   <script src="/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
   <script src="/node_modules/socket.io-client/dist/socket.io.slim.js"></script>
   <!-- Optional JavaScript -->
@@ -83,5 +82,4 @@
   <script src="/js/script.js"></script>
   <script src="/js/client.js"></script>
 </body>
-
 </html>

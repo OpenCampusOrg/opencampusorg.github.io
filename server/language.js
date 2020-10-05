@@ -1,8 +1,18 @@
-const translate = (lang) => {
+var translate = (lang) => {
     var content = [{}]
 
     if (lang == 'fr') {
-        content = [{}]
+        content = {
+            motto: "Deviens membre du hackerspace LeLab !",
+            prop: "Le hackerspace LeLab est une initiative citoyenne neuchâteloise qui vise à unir des innovateurs, des inventeurs et des startups afin de développer et concevoir ensemble des projets innovants.",
+            QA: [
+                { question: "Qu'est-ce qu'un hackerspace ?", answer: "Un hackerspace est constitué d'un open space, d'une communauté active et de machines de prototypages. L'idée est de proposer le développement de projets ensemble et de mettre à disposition une infrastructure de prototypage pour tous les membres. Nous souhaitons permettre aux gens de passer d'une idée à un concept, et du concept à la réalisation." },
+                { question: "J'ai une super idée, mais je ne connais pas grand chose.", answer: "Bonne nouvelle. Pas besoin de sortir d'un cursus ingénieur pour nous rejoindre. Nous serons très heureux de faire ta connaissance et de te montrer comment parvenir à ton objectif." },
+                { question: "Il existe déjà un fablab et repair café en ville.", answer: "Les hackerspaces sont des structures indépendantes des autorités au contraire des fablabs et ces derniers sont destinés à des projets d'envergure créatrice. Notre objectif est de développer des systèmes. Nous ne réparons pas d'électroménager, mais nos projets prennent en compte le respect des normes environnementales." },
+                { question: "Notre startup est basée à Microcity. Pouvons-nous profiter de vos services ?", answer: "Oui, veuillez remplir le formulaire." },
+                { question: "Notre startup recherche des locaux dans lesquels nous pourrions développer notre produit.", answer: "Les locaux permettront de travailler uniquement en commun. Veuillez nous contacter pour plus d'informations." }
+            ]
+        }
     } else if (lang == 'en') {
         content = [{}]
     }
