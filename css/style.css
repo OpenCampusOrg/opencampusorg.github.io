@@ -51,11 +51,6 @@ div.icon-bar a
     font-size: 20px;
 }
 
-div.icon-bar a:link
-{
-    color: white;
-}
-
 div.icon-bar a:hover
 {
     background-color: black;
