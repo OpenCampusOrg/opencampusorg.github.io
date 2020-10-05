@@ -4,31 +4,20 @@ import {lang, form, content} from './script.js'
 const socket = new WebSocket('ws://localhost:3000')
 
 socket.onopen = () => {
-    console.log('client has sucessfully connected to server websocket')
-    if (!form) {
-        form.data.handler = 'newsletter'
-        setInterval(function() {
-            if (socket.bufferedAmount == 0)
-                socket.send(JSON.stringify(form.data))
-        }, 50)
-    }
-    setInterval(function() {
-        if (socket.bufferedAmount == 0)
-            socket.send(JSON.stringify({handler: 'translation', lang: lang}))
-    }, 50)
+    console.log('Client has sucessfully connected to websocket server')
 }
 
-socket.onmessage = (message) => {
-    console.log('message received')
-    if (typeOf(message) == string) {
-        data = JSON.parse(message)
+socket.onmessage = (event) => {
+    console.log('Message received')
+    if (typeOf(event.data) == string) {
+        data = JSON.parse(event.data)
         if (data.handler == 'content') {
-            console.log('content successfully received')
+            console.log('Content successfully received')
             content.motto = data.motto
             content.prop = data.prop
             content.QA = data.QA
         } else {
-            console.log('message:', message)
+            console.log('Message:', event.data)
         }
     }
 }
@@ -40,3 +29,5 @@ socket.onerror = (err) => {
 socket.onclose = () => {
     console.log('client is disconnected from websocket server')
 }
+
+export {socket}

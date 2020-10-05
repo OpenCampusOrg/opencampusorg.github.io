@@ -1,7 +1,18 @@
 'use strict'
 import Vue from '../node_modules/vue/dist/vue.esm.browser.js'
+import {socket} from './client.js'
 
 var lang = '', form = undefined, content = undefined
+
+function translate() {
+    console.log('Attempt to retrieve translated content')
+    while (socket.readyState & WebSocket.CONNECTING) {
+        if (socket.readyState & WebSocket.OPEN) {
+            socket.send(JSON.stringify({handler: 'translation', lang: lang}))
+            console.log('Changed translation to', lang)
+        }
+    }
+}
 
 VANTA.NET({
     el: '#background', // element selector string or DOM object reference
@@ -17,6 +28,7 @@ new Vue({
     created() {
         lang = 'fr'
         $('html').attr('lang', lang)
+        translate()
 
         $('#lang').click(() => {
             if ($('#lang').text() == 'FR') {
@@ -29,6 +41,15 @@ new Vue({
                 throw new ReferenceError('Language not possible')
             }
             $('html').attr('lang', lang)
+            translate()
+        })
+
+        $('#submit').click(() => {
+            form.data.handler = 'newsletter'
+            if (socket.readyState & WebSocket.OPEN) {
+                socket.send(JSON.stringify(form.data))
+                console.log('Sent form data to websocket server')
+            }
         })
     }
 })
