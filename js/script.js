@@ -2,32 +2,21 @@
 import Vue from '../node_modules/vue/dist/vue.esm.browser.js'
 import {socket} from './client.js'
 
-var lang = '', form = undefined, content = undefined
-
-function translate() {
-    console.log('Attempt to retrieve translated content')
-    while (socket.readyState & WebSocket.CONNECTING) {
-        if (socket.readyState & WebSocket.OPEN) {
-            socket.send(JSON.stringify({handler: 'translation', lang: lang}))
-            console.log('Changed translation to', lang)
-        }
-    }
-}
-
-VANTA.NET({
-    el: '#background', // element selector string or DOM object reference
-    color: 0x00adee,
-    backgroundColor: 0x0,
-    points: 3,
-    maxDistance: 60,
-    spacing: 35,
-    showDots: true
-  })
-
-new Vue({
-    created() {
-        lang = 'fr'
-        $('html').attr('lang', lang)
+const translate = () => {
+    if ($('#lang').text() == 'FR') {
+        $('#lang').text('EN')
+        $('.flag')
+        .removeClass('fr')
+        .addClass('uk')   
+        $('html').attr('lang', 'fr')
+    } else if ($('#lang').text() == 'EN') {
+        $('#lang').text('FR')
+        $('.flag')
+        .removeClass('uk')
+        .addClass('fr')
+        $('html').attr('lang', 'en')
+    } else {
+        $('html').attr('lang', 'fr')
         if ($('.uk') == undefined) {
             if ($('.flag') != undefined) {
                 $('.flag').addClass('uk')
@@ -37,46 +26,36 @@ new Vue({
                 )
             }
         }
-        translate()
-
-        $('.navbar-toggler').click(() => {
-            if ($('#lang').text() == 'FR') {
-                $('#lang').text('EN')
-                $('.flag')
-                .removeClass('fr')
-                .addClass('uk')   
-                lang = 'fr'
-            } else if ($('#lang').text() == 'EN') {
-                $('#lang').text('FR')
-                $('.flag')
-                .removeClass('uk')
-                .addClass('fr')
-                lang = 'en'
-            } else {
-                throw new ReferenceError('Language not possible')
-            }
-            $('html').attr('lang', lang)
-            translate()
-        })
-
-        $('#submit').click(() => {
-            form.data.handler = 'newsletter'
-            if (socket.readyState & WebSocket.OPEN) {
-                socket.send(JSON.stringify(form.data))
-                console.log('Sent form data to websocket server')
-            }
-        })
     }
-})
+    console.log('Attempt to retrieve translated content')
+    socket.addEventListener('open', (event) => {
+        while (socket.bufferedAmount != 0);
+        let lang = $('html').attr('lang')
+        socket.send(JSON.stringify({handler: 'translation', lang: lang}))
+        console.log('Changed translation to', lang)
+    })
+}
 
-content = new Vue({
+const animate = () => {
+    VANTA.NET({
+        el: '#background', // element selector string or DOM object reference
+        color: 0x00adee,
+        backgroundColor: 0x0,
+        points: 3,
+        maxDistance: 60,
+        spacing: 35,
+        showDots: true
+    })
+}
+
+let content = new Vue({
     el: '#content',
     data: {
         motto: undefined, prop: undefined, QA: undefined
     }
 })
 
-form = new Vue({
+let form = new Vue({
     el: '#form',
     data: {
         name: undefined,
@@ -89,4 +68,36 @@ form = new Vue({
     }
 })
 
-export {lang, form, content}
+new Vue({
+    created() {
+        animate()
+        translate()
+
+        socket.addEventListener('message', (event) => {
+            if (typeof(event.data) == string) {
+                data = JSON.parse(event.data)
+                if (typeof(data) == string) {
+                    if (data.handler == 'content') {
+                        console.log('Content successfully received')
+                        content.motto = data.motto
+                        content.prop = data.prop
+                        content.QA = data.QA
+                    } else {
+                        console.log('Message:', event.data)
+                    }
+                }
+            }
+        })
+
+        $('.navbar-toggler').click(translate)
+
+        $('#submit').click(() => {
+            form.data.handler = 'newsletter'
+            socket.addEventListener('open', (event) => {
+                while (socket.bufferedAmount != 0);
+                socket.send(JSON.stringify(form.data))
+            })
+            console.log('Sent form data to websocket server')
+        })
+    }
+})

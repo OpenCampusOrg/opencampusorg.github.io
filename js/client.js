@@ -1,35 +1,43 @@
 'use strict'
-import {lang, form, content} from './script.js'
 
 const socket = new WebSocket('ws://localhost:3000')
 
 socket.onopen = () => {
-    console.log('Client has sucessfully connected to websocket server')
-}
-
-socket.onmessage = (event) => {
-    console.log('Message received')
-    if (typeOf(event.data) == string) {
-        data = JSON.parse(event.data)
-        if (data.handler == 'content') {
-            console.log('Content successfully received')
-            content.motto = data.motto
-            content.prop = data.prop
-            content.QA = data.QA
-        } else {
-            console.log('Message:', event.data)
+    if (socket.readyState === WebSocket.CONNECTING) {
+        console.log('CONNECTING TCP client to websocket server')
+        if (socket.readyState === WebSocket.OPEN) {
+            console.log('TCP connection to websocket server is OPEN')
         }
     }
 }
 
-socket.onerror = (err) => {
-    console.error(err)
+socket.onmessage = () => {
+    console.log('Message received')
 }
 
-socket.onclose = () => {
-    console.log('client is disconnected from websocket server')
-    alert('You have been disconnected. Please restart the page\n\n\
+socket.onerror = (event) => {
+    try {
+        if (typeof(event.target) == string) {
+            event.initEvent(event.target)
+        }
+    } catch (e) {
+        console.error(e)
+    }
+}
+
+socket.onclose = (event) => {
+    if (socket.readyState === WebSocket.CLOSING) {
+        console.log('Server is CLOSING TCP connection')
+        if (socket.readyState === WebSocket.CLOSED) {
+            console.log('TCP connection to websocket server is CLOSED')
+            if (alert.reason != undefined) {
+                alert(event.reason)
+            } else {
+                alert('You have been disconnected. Please restart the page\n\n\
 Vous avez été déconnecté. Veuillez SVP recharger la page')
+            }
+        }
+    }
 }
 
 export {socket}
