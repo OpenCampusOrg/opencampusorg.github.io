@@ -5,7 +5,7 @@ const assert = require('assert')
 class Database {
 
     /**
-     * constructor of Database class
+     * construct a Database object
      * @param {string} url 
      * @param {string} dbName 
      */
@@ -21,7 +21,7 @@ class Database {
     }
 
     /**
-     * Connect to Mongo Database
+     * Connect to Mongo database
      * @param {Function} callback 
      */
     async connect(callback) {
@@ -39,7 +39,7 @@ class Database {
     }
 
     /**
-     * Connect to Mongo Database
+     * Connect to Mongo database
      * @param {string} url 
      * @param {string} dbName 
      * @param {function} callback 
@@ -70,7 +70,7 @@ class Database {
     }
     
     /**
-     * serialize Objects into documents
+     * Serialize Objects into documents
      * @param {Array<Object>} documents 
      * @param {string} category
      * @param {function} callback 
@@ -81,6 +81,9 @@ class Database {
         })
     }
 
+    /**
+     * close connection to database
+     */
     async close() {
         await client.close()
     }
