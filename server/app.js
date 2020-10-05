@@ -1,8 +1,6 @@
-const http = require('http2')
 const WebSocket = require('ws')
 
-const wss = new WebSocket.Server({port: 3001})
-const server = http.createServer()
+const wss = new WebSocket.Server({port: 3000})
 
 const { Database } = require('./database')
 const { Content } = require('./content')
@@ -27,5 +25,3 @@ wss.on('connection', async (ws) => {
 
     await ws.on('disconnect', () => {})
 })
-
-server.listen(3000)
