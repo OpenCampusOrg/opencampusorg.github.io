@@ -6,10 +6,12 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
     "bootstrap": "^4.5.2",
+    "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "mdbootstrap": "^4.19.1",
     "mongodb": "^3.6.1",
+    "nuxt": "^2.14.4",
     "popper.js": "^1.16.1",
     "vanta": "^0.5.18",
     "vue": "^2.6.12",
@@ -27,13 +29,14 @@
   },
   "keywords": [
     "vue",
+    "nuxt",
     "bootstrap",
     "vanta",
     "three",
     "es2015",
     "mongodb",
     "websockets",
-    "ejs"
+    "hackerspace"
   ],
   "author": "Steve Huguenin-Elie",
   "license": "MPL-2.0",
