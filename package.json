@@ -1,0 +1,43 @@
+{
+  "name": "lelab.space",
+  "version": "1.0.0",
+  "description": "The community website",
+  "main": "server/app.js",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "bootstrap": "^4.5.2",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.5.1",
+    "mongodb": "^3.6.1",
+    "popper.js": "^1.16.1",
+    "vanta": "^0.5.18",
+    "vue": "^2.6.12",
+    "ws": "^7.3.1"
+  },
+  "devDependencies": {
+    "assert": "^2.0.0"
+  },
+  "scripts": {
+    "test": "node server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hackerspace-LeLab/lelab.space.git"
+  },
+  "keywords": [
+    "vue",
+    "bootstrap",
+    "vanta",
+    "three",
+    "es2015",
+    "mongodb",
+    "websockets",
+    "ejs"
+  ],
+  "author": "Steve Huguenin-Elie",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/Hackerspace-LeLab/lelab.space/issues"
+  },
+  "homepage": "https://github.com/Hackerspace-LeLab/lelab.space#readme"
+}
