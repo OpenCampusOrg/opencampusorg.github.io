@@ -8,7 +8,7 @@ const THREE = require('three')
 
 export default {
   beforeMount () {
-    this.vantaEffect = vantaNet({
+    window.vantaEffect = vantaNet({
       el: '#background',
       mouseControls: true,
       touchControls: true,
