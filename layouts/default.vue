@@ -48,6 +48,9 @@ export default {
   },
   head () {
     return {
+      meta: [
+        { httpEquiv: 'Content-Language', content: this.lang.toLowerCase() }
+      ],
       htmlAttrs: {
         lang: this.lang.toLowerCase()
       }
