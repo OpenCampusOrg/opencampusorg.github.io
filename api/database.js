@@ -1,6 +1,6 @@
 'use strict'
-import consola from 'consola'
 const assert = require('assert')
+const { default: consola } = require('consola')
 const MongoClient = require('mongodb').MongoClient
 
 module.exports = class Database {

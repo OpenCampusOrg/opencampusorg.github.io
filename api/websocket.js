@@ -1,7 +1,7 @@
 'use strict'
-import consola from 'consola'
-import i18n from '../assets/i18n'
+const { default: consola } = require('consola')
 const WebSocket = require('ws')
+const { default: i18n } = require('../assets/i18n')
 const Database = require('./database')
 
 function websocket (serverOptions) {
