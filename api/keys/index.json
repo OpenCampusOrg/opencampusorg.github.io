@@ -1,0 +1,9 @@
+{
+    "certs": [
+        "spdy-fullchain.pem",
+        "spdy-key.pem"
+    ],
+    "script": [
+        "gen-certs.sh"
+    ]
+}
