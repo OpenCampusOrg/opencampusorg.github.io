@@ -1,6 +1,5 @@
 'use strict'
 import fs from 'fs'
-import { Server } from 'http'
 import path from 'path'
 const spdy = require('spdy')
 
@@ -20,11 +19,11 @@ const options = {
 
 /**
  * server
- * @param {Server} http
+ * @param {Function} app
  * @returns {spdy.Server}
  */
-function server (http = Server()) {
-  return spdy.createServer(options, http)
+function server (app) {
+  return spdy.createServer(options, app)
 }
 
 module.exports = server
