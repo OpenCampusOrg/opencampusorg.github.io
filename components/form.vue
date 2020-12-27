@@ -68,6 +68,7 @@
 
 <script>
 import consola from 'consola'
+import { send } from '~/middleware/websocket'
 export default {
   props: {
     content: {
@@ -77,7 +78,6 @@ export default {
   },
   data () {
     return {
-      socket: null,
       form: {
         name: '',
         birth: '',
@@ -89,61 +89,12 @@ export default {
       }
     }
   },
-  beforeMount () {
-    this.socket = new WebSocket('ws://localhost:3000')
-
-    this.socket.onopen = () => {
-      if (this.socket.readyState === WebSocket.CONNECTING) {
-        consola.log('CONNECTING TCP client to websocket server')
-        if (this.socket.readyState === WebSocket.OPEN) {
-          consola.log('TCP connection to websocket server is OPEN')
-        }
-      }
-    }
-
-    this.socket.onerror = (event) => {
-    }
-
-    this.socket.onclose = (event) => {
-      if (this.socket.readyState === WebSocket.CLOSING) {
-        consola.log('Server is CLOSING TCP connection')
-        if (this.socket.readyState === WebSocket.CLOSED) {
-          consola.log('TCP connection to websocket server is CLOSED')
-          if (typeof event.reason !== 'undefined') {
-            alert(event.reason)
-          } else {
-            alert('You have been disconnected. Please restart the page\n\nVous avez été déconnecté. Veuillez SVP recharger la page')
-          }
-        }
-      }
-    }
-  },
-  mounted () {
-    this.socket.addEventListener('message', (event) => {
-      if (event.type !== 'string') {
-        let data
-        try {
-          data = JSON.parse(event.data)
-        } catch (e) {
-          data = event.data
-        } finally {
-          if (data === 'user data has been serialized') {
-            delete this.form
-          }
-        }
-      } else {
-        consola.log('Binary type message incoming is not managed...')
-      }
-    })
-  },
   methods: {
     submit () {
       this.form.data.handler = 'newsletter'
-      if (this.socket.readyState === WebSocket.socket.OPEN) {
-        while (this.socket.bufferedAmount !== 0) { ; }
-        this.socket.send(JSON.stringify(this.form.data))
-      }
-      consola.log('Sent form data to websocket server')
+      send(this.form.data)
+      delete this.form
+      consola.log('Sending form data to websocket server...')
     }
   }
 }

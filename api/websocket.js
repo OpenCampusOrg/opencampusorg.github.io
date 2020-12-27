@@ -1,10 +1,10 @@
 'use strict'
-const { default: consola } = require('consola')
+import consola from 'consola'
 const WebSocket = require('ws')
-const { default: i18n } = require('../assets/i18n')
+const i18n = require('../assets/i18n')
 const Database = require('./database')
 
-function websocket (serverOptions) {
+export function websocket (serverOptions) {
   const wss = new WebSocket.Server(serverOptions)
 
   wss.on('connection', (ws) => {
@@ -18,12 +18,12 @@ function websocket (serverOptions) {
         // serialize data from newsletter
         Database.connect((client, dbName) => {
         })
-        ws.send('user data has been serialized')
-      } else if (data.handler === 'translation') {
+        consola.log('user data has been serialized')
+      } else if (data === 'translation') {
         const content = i18n.translate(data.lang)
         content.handler = 'content'
         ws.send(JSON.stringify(content))
-        ws.send('text has been translated')
+        consola.log('text has been translated')
       } else {
         consola.log('Message:', message)
       }
@@ -46,5 +46,3 @@ function websocket (serverOptions) {
     consola.log('closed websocket')
   })
 }
-
-module.exports = websocket
