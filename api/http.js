@@ -1,11 +1,11 @@
 'use strict'
-import fs from 'fs'
-import path from 'path'
+const fs = require('fs')
+const path = require('path')
 const spdy = require('spdy')
 
 const options = {
-  key: require(path.resolve('keys/spdy-key.pem')),
-  cert: require(path.resolve('keys/spdy-fullchain.pem')),
+  key: fs.readFileSync(path.join(__dirname, '/keys/spdy-key.pem')),
+  cert: fs.readFileSync(path.join(__dirname, '/keys/spdy-fullchain.pem')),
   spdy: {
     protocols: ['h2', 'spdy/3.1', 'spdy/3', 'spdy/2'],
     plain: false,
