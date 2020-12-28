@@ -1,12 +1,14 @@
 {
   "name": "lelab.space",
   "version": "1.0.0",
+  "licence": "MPL-2.0",
   "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "deploy": "rm -rf node_modules/.cache && nuxt generate && touch dist/.nojekyll && git add dist && git commit -m \"Deploy version 1.0.0\" && git subtree push --prefix dist origin gh-pages",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js"
   },
