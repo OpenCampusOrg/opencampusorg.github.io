@@ -1,11 +1,9 @@
-import fs from 'fs'
-import path from 'path'
 export default {
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
   */
-  mode: 'universal',
+  ssr: true,
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
@@ -65,29 +63,6 @@ export default {
     'bootstrap-vue/nuxt',
     'mdbvue/nuxt',
     '@nuxtjs/pwa'
-  ],
-  server: {
-    port: 3000,
-    host: '0.0.0.0',
-    https: {
-      key: fs.readFileSync(path.join(__dirname, '/api/keys/spdy-key.pem')),
-      cert: fs.readFileSync(path.join(__dirname, '/api/keys/spdy-fullchain.pem')),
-      spdy: {
-        protocols: ['h2', 'spdy/3.1', 'spdy/3', 'spdy/2'],
-        plain: false,
-        'x-forwarded-for': true,
-        connection: {
-          windowSize: 1024 * 1024,
-          autoSpdy31: true
-        }
-      }
-    }
-  },
-  /*
-   ** Server Middleware
-   */
-  serverMiddleware: [
-    { path: '/api', handler: '~/api/app.js' }
   ],
   /*
   ** Build configuration

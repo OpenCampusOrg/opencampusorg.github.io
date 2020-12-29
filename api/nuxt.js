@@ -1,20 +1,19 @@
 'use strict'
-import config from '../nuxt.config'
 const express = require('express')
-const { Nuxt, build } = require('nuxt')
+const { Nuxt, Builder } = require('nuxt')
+const config = require('../nuxt.config')
 
 const app = express()
 const nuxt = new Nuxt(config)
 config.dev = process.env.NODE_ENV !== 'production'
 
 if (config.dev) {
-  build(nuxt)
+  const builder = new Builder(nuxt)
+  builder.build()
 } else {
   nuxt.ready()
 }
 
-if (process.server) {
-  app.use(nuxt.render)
-}
+app.use(nuxt.render)
 
-export { app }
+module.exports = app

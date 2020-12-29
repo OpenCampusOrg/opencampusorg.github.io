@@ -1,10 +1,10 @@
 'use strict'
-import consola from 'consola'
+const consola = require('consola')
 const WebSocket = require('ws')
 const i18n = require('../assets/i18n')
 const Database = require('./database')
 
-export function websocket (serverOptions) {
+module.exports = function websocket (serverOptions) {
   const wss = new WebSocket.Server(serverOptions)
 
   wss.on('connection', (ws) => {

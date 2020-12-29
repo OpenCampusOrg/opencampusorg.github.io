@@ -4,9 +4,9 @@
   "licence": "MPL-2.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nodemon --exec babel-node api/app.js",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "start": "env NODE_ENV=production babel-node api/app.js",
     "generate": "nuxt generate",
     "deploy": "rm -rf node_modules/.cache && nuxt generate && touch dist/.nojekyll && git add dist && git commit -m \"Deploy version 1.0.0\" && git subtree push --prefix dist origin gh-pages",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
@@ -25,19 +25,24 @@
     "mdbootstrap": "^4.19.1",
     "mdbvue": "^6.7.1",
     "mongodb": "^3.6.1",
-    "nuxt": "^2.14.0",
+    "nuxt": "latest",
     "popper.js": "^1.16.1",
     "spdy": "^4.0.2",
     "three": "^0.120.1",
     "vanta": "^0.5.18",
-    "vue": "^2.6.12",
+    "vue": "latest",
     "ws": "^7.3.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "@nuxtjs/eslint-config": "^3.1.0",
     "@nuxtjs/eslint-module": "^2.0.0",
     "babel-eslint": "^10.1.0",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^7.5.0",
-    "eslint-plugin-nuxt": "^1.0.0"
+    "eslint-plugin-nuxt": "^1.0.0",
+    "nodemon": "^2.0.6"
   }
 }

@@ -7,8 +7,8 @@ const options = {
   key: fs.readFileSync(path.join(__dirname, '/keys/spdy-key.pem')),
   cert: fs.readFileSync(path.join(__dirname, '/keys/spdy-fullchain.pem')),
   spdy: {
-    protocols: ['h2', 'spdy/3.1', 'spdy/3', 'spdy/2'],
-    plain: false,
+    protocols: ['h2', 'spdy/3.1', 'spdy/3', 'spdy/2', 'http/1.1'],
+    plain: true,
     'x-forwarded-for': true,
     connection: {
       windowSize: 1 << 20,
