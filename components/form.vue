@@ -68,7 +68,7 @@
 
 <script>
 import consola from 'consola'
-import { send } from '~/middleware/websocket'
+import { connect, send } from '~/middleware/websocket'
 export default {
   props: {
     content: {
@@ -88,6 +88,9 @@ export default {
         message: ''
       }
     }
+  },
+  beforeMount () {
+    connect(location.protocol, location.hostname, location.port)
   },
   methods: {
     submit () {

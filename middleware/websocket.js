@@ -1,30 +1,38 @@
+'use strict'
 import consola from 'consola'
 
-export function connect (host, port) {
-  // virtual ip address
-  if (typeof this.socket !== 'undefined') {
-    return this.socket
-  }
-  this.socket = new WebSocket('wss://' + host + ':' + port)
+let socket
 
-  this.socket.onopen = () => {
-    if (this.socket.readyState === WebSocket.CONNECTING) {
+export function connect (protocol = 'https', host, port) {
+  // virtual ip address
+  if (typeof socket === 'undefined') {
+    if (protocol.includes('https')) {
+      socket = new WebSocket('wss://' + host + ':' + port)
+    } else if (protocol.includes('http')) {
+      socket = new WebSocket('ws://' + host + ':' + port)
+    }
+  } else {
+    return socket
+  }
+
+  socket.onopen = () => {
+    if (socket.readyState === WebSocket.CONNECTING) {
       consola.log('CONNECTING TCP client to WebSocket server')
-      if (this.socket.readyState === WebSocket.OPEN) {
+      if (socket.readyState === WebSocket.OPEN) {
         consola.log('TCP connection to WebSocket server is OPEN')
-        this.socket.busy = false
+        socket.busy = false
       }
     }
   }
 
-  this.socket.onerror = (event) => {
-    this.socket.error = true
+  socket.onerror = (event) => {
+    socket.error = true
   }
 
-  this.socket.onclose = (event) => {
-    if (this.socket.readyState === WebSocket.CLOSING) {
+  socket.onclose = (event) => {
+    if (socket.readyState === WebSocket.CLOSING) {
       consola.log('Server is CLOSING TCP connection')
-      if (this.socket.readyState === WebSocket.CLOSED) {
+      if (socket.readyState === WebSocket.CLOSED) {
         consola.log('TCP connection to WebSocket server is CLOSED')
         if (typeof event.reason !== 'undefined') {
           alert(event.reason)
@@ -35,12 +43,12 @@ export function connect (host, port) {
     }
   }
 
-  this.socket.addEventListener('message', (event) => {
+  socket.addEventListener('message', (event) => {
     if (event.type === 'string') {
       try {
-        this.socket.data = JSON.parse(event.data)
+        socket.data = JSON.parse(event.data)
       } catch (e) {
-        this.socket.data = event.data
+        socket.data = event.data
       }
     } else {
       consola.log('Binary type message incoming is not managed...')
@@ -49,24 +57,24 @@ export function connect (host, port) {
 }
 
 export function send (data) {
-  if (this.socket.readyState === WebSocket.socket.OPEN) {
-    if (this.socket.busy === true) {
+  if (socket.readyState === WebSocket.socket.OPEN) {
+    if (socket.busy === true) {
       setTimeout(() => {
-        if (this.socket.bufferedAmount === 0) {
-          this.socket.busy = false
+        if (socket.bufferedAmount === 0) {
+          socket.busy = false
           consola.log('Socket is ready for sending')
         }
       }, 50)
     }
     if (data !== 'string') {
-      this.socket.send(JSON.stringify(data))
+      socket.send(JSON.stringify(data))
     } else {
-      this.socket.send(data)
+      socket.send(data)
     }
-    this.socket.busy = true
+    socket.busy = true
   }
 }
 
 export function data () {
-  return this.socket.data
+  return socket.data
 }
