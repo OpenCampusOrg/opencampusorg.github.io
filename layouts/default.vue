@@ -60,6 +60,10 @@ export default {
 </script>
 
 <style>
+  body {
+    background: black;
+  }
+
   .navbar ::selection {
     color: none;
     background: none;
