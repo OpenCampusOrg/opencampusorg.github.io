@@ -1,5 +1,5 @@
 <template>
-  <span id="background" class="h-100 w-100 position-fixed bg-body" />
+  <span ref="vantaRef" class="h-100 w-100 position-fixed bg-body" />
 </template>
 
 <script>
@@ -7,9 +7,9 @@ import vantaNet from 'vanta/src/vanta.net'
 const THREE = require('three')
 
 export default {
-  beforeMount () {
-    window.vantaEffect = vantaNet({
-      el: '#background',
+  mounted () {
+    this.vantaEffect = vantaNet({
+      el: this.$refs.vantaRef,
       mouseControls: true,
       touchControls: true,
       gyroControls: true,
@@ -23,7 +23,9 @@ export default {
     })
   },
   beforeDestroy () {
-    window.vantaEffect.destroy()
+    if (this.vantaEffect !== undefined) {
+      this.vantaEffect.destroy()
+    }
   }
 }
 </script>
