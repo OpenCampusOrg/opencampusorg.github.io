@@ -35,6 +35,7 @@ export default {
   ** Global CSS
   */
   css: [
+    { src: '@fortawesome/fontawesome-svg-core/styles.css', lang: 'css' },
     { src: 'mdbootstrap/css/addons/flag.min.css', lang: 'css' }
   ],
   /*
