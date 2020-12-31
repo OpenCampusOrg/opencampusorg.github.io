@@ -26,7 +26,6 @@
     "mdbvue": "^6.7.1",
     "mongodb": "^3.6.1",
     "nuxt": "latest",
-    "popper.js": "^1.16.1",
     "spdy": "^4.0.2",
     "three": "^0.120.1",
     "vanta": "^0.5.18",
@@ -46,5 +45,9 @@
     "eslint": "^7.5.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "nodemon": "^2.0.6"
+  },
+  "optionalDependencies": {
+    "jquery": "^3.5.1",
+    "typescript": "^3.9.4"
   }
 }
