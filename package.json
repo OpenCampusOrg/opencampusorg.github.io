@@ -4,7 +4,7 @@
   "licence": "MPL-2.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon --exec babel-node api/app.js",
+    "dev": "babel-node api/app.js",
     "build": "nuxt build",
     "start": "env NODE_ENV=production babel-node api/app.js",
     "generate": "nuxt generate",
@@ -33,7 +33,6 @@
     "ws": "^7.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/runtime-corejs3": "^7.12.5",

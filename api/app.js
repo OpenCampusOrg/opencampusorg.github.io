@@ -1,6 +1,6 @@
 'use strict'
 const consola = require('consola')
-const config = require('../nuxt.config')
+const { default: config } = require('../nuxt.config')
 const app = require('./nuxt')
 const server = require('./http')(app)
 const websocket = require('./websocket')
