@@ -23,7 +23,9 @@ const options = {
  * @returns {spdy.Server}
  */
 function server (app) {
-  return spdy.createServer(options, app)
+  let server = spdy.createServer(options, app)
+  server.options = options
+  return server
 }
 
 module.exports = server

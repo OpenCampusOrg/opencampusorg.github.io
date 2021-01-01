@@ -28,7 +28,7 @@ server.listen(port, host, () =>
 \t│   ▸ Rendering:   ${config.ssr ? 'server-side' : 'client-side'}          │\r\n\
 \t│   ▸ Target:      ${config.ssr ? 'server' : 'client'}               │\r\n\
 \t│                                       │\r\n\
-\t│   Listening: https://${host}:${port}/    │\r\n\
+\t│   Listening: ${server.options.spdy.ssl === true ? 'https' : 'http'}://${host}:${port}/    │\r\n\
 \t│                                       │\r\n\
 \t╰───────────────────────────────────────╯\r\n`))
 
