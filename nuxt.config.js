@@ -66,13 +66,6 @@ export default {
     'mdbvue/nuxt',
     '@nuxtjs/pwa'
   ],
-  babel: {
-    presets (env, [preset, options]) {
-      return [
-        ['@nuxt/babel-preset-app', options]
-      ]
-    }
-  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
