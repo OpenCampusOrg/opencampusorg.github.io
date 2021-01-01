@@ -35,27 +35,33 @@ export default {
   mounted () {
     this.lang = localStorage.getItem('lang')
     this.country = localStorage.getItem('country')
+    this.title = localStorage.getItem('title')
   },
   updated () {
     localStorage.setItem('lang', this.lang)
     localStorage.setItem('country', this.country)
+    localStorage.setItem('title', this.title)
   },
   methods: {
     translate () {
       if (this.lang === 'FR') {
         this.lang = 'EN'
         this.country = 'uk'
+        this.title = 'Join the Labspace'
       } else if (this.lang === 'EN') {
         this.lang = 'FR'
         this.country = 'fr'
+        this.title = 'Rejoins Labspace'
       } else {
         this.lang = 'EN'
         this.country = 'uk'
+        this.title = 'Join the Labspace'
       }
     }
   },
   head () {
     return {
+      title: this.title,
       meta: [
         { httpEquiv: 'Content-Language', content: this.lang.toLowerCase() }
       ],
