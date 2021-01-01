@@ -1,9 +1,12 @@
 'use strict'
 const consola = require('consola')
 const { default: config } = require('../nuxt.config')
+const { dependencies } = require('../package-lock.json')
 const app = require('./nuxt')
 const server = require('./http')(app)
 const websocket = require('./websocket')
+
+config.version = 'v' + dependencies.nuxt.version
 
 const { host, port } = {
   host: process.env.HOST || '0.0.0.0',
@@ -19,7 +22,7 @@ server.listen(port, host, () =>
   consola.log(`\r\n\
 \t╭───────────────────────────────────────╮\r\n\
 \t│                                       │\r\n\
-\t│   Nuxt @ ${config.version !== undefined ? config.version : 'v2.14.12'}                     │\r\n\
+\t│   Nuxt @ ${config.version !== undefined ? config.version : 'latest'}                     │\r\n\
 \t│                                       │\r\n\
 \t│   ▸ Environment: ${config.dev ? 'development' : 'production '}          │\r\n\
 \t│   ▸ Rendering:   ${config.ssr ? 'server-side' : 'client-side'}          │\r\n\
