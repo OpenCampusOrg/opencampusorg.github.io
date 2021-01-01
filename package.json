@@ -1,8 +1,21 @@
 {
   "name": "lelab.space",
   "version": "1.0.0",
+  "description": "The community website",
+  "main": "api/app.js",
   "licence": "MPL-2.0",
   "private": true,
+  "keywords": [
+    "vue",
+    "nuxt",
+    "bootstrap",
+    "vanta",
+    "three",
+    "es2015",
+    "mongodb",
+    "websockets",
+    "hackerspace"
+  ],
   "scripts": {
     "dev": "babel-node api/app.js",
     "build": "nuxt build",
