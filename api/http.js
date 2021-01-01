@@ -23,7 +23,7 @@ const options = {
  * @returns {spdy.Server}
  */
 function server (app) {
-  let server = spdy.createServer(options, app)
+  const server = spdy.createServer(options, app)
   server.options = options
   return server
 }
