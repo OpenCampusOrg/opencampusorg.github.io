@@ -1,10 +1,9 @@
 <template>
-  <span ref="vantaRef" class="h-100 w-100 position-fixed bg-body" />
+  <div ref="vantaRef" class="h-100 w-100 position-fixed bg-body" />
 </template>
 
 <script>
 import vantaNet from 'vanta/src/vanta.net'
-const THREE = require('three')
 
 export default {
   mounted () {
@@ -18,8 +17,7 @@ export default {
       points: 3,
       maxDistance: 60,
       spacing: 35,
-      showDots: true,
-      THREE
+      showDots: true
     })
   },
   beforeDestroy () {

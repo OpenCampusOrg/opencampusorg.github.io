@@ -29,6 +29,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
+      { src: '/three.r119.min.js' }
     ]
   },
   /*
