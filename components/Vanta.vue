@@ -6,8 +6,8 @@
 import vantaNet from 'vanta/src/vanta.net'
 
 export default {
-  mounted () {
-    this.vantaEffect = vantaNet({
+  async mounted () {
+    this.vantaEffect = await vantaNet({
       el: this.$refs.vantaRef,
       mouseControls: true,
       touchControls: true,
