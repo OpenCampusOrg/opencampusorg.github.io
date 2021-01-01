@@ -32,6 +32,14 @@ export default {
       return i18n.translate(this.lang.toLowerCase())
     }
   },
+  mounted () {
+    this.lang = localStorage.getItem('lang')
+    this.country = localStorage.getItem('country')
+  },
+  updated () {
+    localStorage.setItem('lang', this.lang)
+    localStorage.setItem('country', this.country)
+  },
   methods: {
     translate () {
       if (this.lang === 'FR') {
