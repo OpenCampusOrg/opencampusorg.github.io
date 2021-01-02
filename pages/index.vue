@@ -33,9 +33,18 @@ export default {
     }
   },
   mounted () {
-    this.lang = localStorage.getItem('lang')
-    this.country = localStorage.getItem('country')
-    this.title = localStorage.getItem('title')
+    const lang = localStorage.getItem('lang')
+    const country = localStorage.getItem('country')
+    const title = localStorage.getItem('title')
+    if (typeof lang === 'string') {
+      this.lang = lang
+    }
+    if (typeof country === 'string') {
+      this.country = country
+    }
+    if (typeof title === 'string') {
+      this.title = title
+    }
   },
   updated () {
     localStorage.setItem('lang', this.lang)
