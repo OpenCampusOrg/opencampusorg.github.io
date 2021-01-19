@@ -1,6 +1,6 @@
 'use strict'
 const consola = require('consola')
-const { default: config } = require('../nuxt.config')
+const config = require('../nuxt.config')
 const { dependencies } = require('../package-lock.json')
 const app = require('./nuxt')
 const server = require('./http')(app)

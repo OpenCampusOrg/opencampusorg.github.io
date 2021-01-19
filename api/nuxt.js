@@ -1,7 +1,7 @@
 'use strict'
 const express = require('express')
 const { Nuxt, Builder } = require('nuxt')
-const { default: config } = require('../nuxt.config')
+const config = require('../nuxt.config')
 
 const app = express()
 const nuxt = new Nuxt(config)

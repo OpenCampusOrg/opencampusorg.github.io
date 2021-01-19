@@ -22,4 +22,4 @@ const i18n = {
     return require('~/static/i18n/'.concat(content[index]))
   }
 }
-export default i18n
+module.exports = i18n
