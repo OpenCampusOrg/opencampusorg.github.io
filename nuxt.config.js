@@ -43,7 +43,6 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    { src: '~/plugins/fontawesome.js' }
   ],
   /*
   ** Auto import components
@@ -64,8 +63,18 @@ export default {
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
     'mdbvue/nuxt',
+    '@nuxtjs/fontawesome',
     '@nuxtjs/pwa'
   ],
+  /*
+  ** Font Awesome
+  */
+  fontawesome: {
+    icons: {
+      solid: true,
+      brands: true
+    }
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
