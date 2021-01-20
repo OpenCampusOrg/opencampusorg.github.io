@@ -3,6 +3,7 @@ const consola = require('consola')
 const config = require('../nuxt.config')
 const { dependencies } = require('../package-lock.json')
 const app = require('./nuxt')
+const redirect = require('./redirect')
 const server = require('./http')(app)
 const websocket = require('./websocket')
 
@@ -13,10 +14,8 @@ const { host, port } = {
   port: process.env.PORT || '5500'
 }
 
-const wsServerOptions = {
-  server
-}
-websocket(wsServerOptions)
+websocket({ server })
+redirect(port)
 
 server.listen(port, host, () =>
   consola.log(`\r\n\
