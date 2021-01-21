@@ -60,7 +60,6 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://bootstrap-vue.js.org
     'mdbvue/nuxt',
     '@nuxtjs/fontawesome',
     '@nuxtjs/pwa'
