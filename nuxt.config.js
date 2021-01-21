@@ -78,6 +78,20 @@ module.exports = {
   */
   telemetry: false,
   /*
+  ** Nuxt PWA
+  */
+  pwa: {
+    manifest: {
+      background_color: '#000000'
+    },
+    meta: {
+      theme_color: 'jarvis'
+    },
+    workbox: {
+      enabled: true
+    }
+  },
+  /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
