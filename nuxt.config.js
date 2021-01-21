@@ -61,7 +61,6 @@ module.exports = {
   */
   modules: [
     // Doc: https://bootstrap-vue.js.org
-    'bootstrap-vue/nuxt',
     'mdbvue/nuxt',
     '@nuxtjs/fontawesome',
     '@nuxtjs/pwa'
@@ -75,6 +74,10 @@ module.exports = {
       brands: true
     }
   },
+  /*
+  ** Nuxt Telemetry
+  */
+  telemetry: false,
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
