@@ -31,7 +31,7 @@ export function connect (protocol = 'https', host, port) {
     consola.log('Server is CLOSING TCP connection')
     if (socket.readyState === WebSocket.CLOSED) {
       consola.log('TCP connection to WebSocket server is CLOSED')
-      if (typeof event.reason !== 'undefined') {
+      if (event.reason.length !== 0) {
         alert(event.reason)
       } else {
         alert('You have been disconnected. Please restart the page\n\nVous avez été déconnecté. Veuillez SVP recharger la page')
