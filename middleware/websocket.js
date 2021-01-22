@@ -57,7 +57,7 @@ export function connect (protocol = 'https', host, port) {
 }
 
 export function send (data) {
-  if (socket.readyState === WebSocket.socket.OPEN) {
+  if (socket.readyState === WebSocket.OPEN) {
     if (socket.busy === true) {
       setTimeout(() => {
         if (socket.bufferedAmount === 0) {
