@@ -29,15 +29,14 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
-      { src: '/three.r119.min.js' }
+      { src: 'https://cdn.jsdelivr.net/npm/vanta@0.5.21/vendor/three.r119.min.js' }
     ]
   },
   /*
   ** Global CSS
   */
   css: [
-    { src: '@fortawesome/fontawesome-svg-core/styles.css', lang: 'css' },
-    { src: 'mdbootstrap/css/addons/flag.min.css', lang: 'css' }
+    { src: 'https://cdn.jsdelivr.net/npm/mdbootstrap@4.19.2/css/addons/flag.min.css', lang: 'css' }
   ],
   /*
   ** https://nuxtjs.org/guide/plugins

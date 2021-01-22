@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "jquery": "^3.5.1",
-    "mdbootstrap": "^4.19.1",
     "mdbvue": "^6.7.2",
     "mongodb": "^3.6.1",
     "nuxt": "latest",
