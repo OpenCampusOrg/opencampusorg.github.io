@@ -26,6 +26,7 @@ module.exports = {
       { lang: 'en' }
     ],
     link: [
+      { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/mdbootstrap@4.19.2/css/addons/flag.min.css' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
@@ -36,7 +37,6 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    { src: 'https://cdn.jsdelivr.net/npm/mdbootstrap@4.19.2/css/addons/flag.min.css', lang: 'css' }
   ],
   /*
   ** https://nuxtjs.org/guide/plugins
