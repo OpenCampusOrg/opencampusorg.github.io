@@ -16,12 +16,10 @@ export function connect (protocol = 'https', host, port) {
   }
 
   socket.onopen = () => {
-    if (socket.readyState === WebSocket.CONNECTING) {
-      consola.log('CONNECTING TCP client to WebSocket server')
-      if (socket.readyState === WebSocket.OPEN) {
-        consola.log('TCP connection to WebSocket server is OPEN')
-        socket.busy = false
-      }
+    consola.log('CONNECTING TCP client to WebSocket server')
+    if (socket.readyState === WebSocket.OPEN) {
+      consola.log('TCP connection to WebSocket server is OPEN')
+      socket.busy = false
     }
   }
 
@@ -30,15 +28,13 @@ export function connect (protocol = 'https', host, port) {
   }
 
   socket.onclose = (event) => {
-    if (socket.readyState === WebSocket.CLOSING) {
-      consola.log('Server is CLOSING TCP connection')
-      if (socket.readyState === WebSocket.CLOSED) {
-        consola.log('TCP connection to WebSocket server is CLOSED')
-        if (typeof event.reason !== 'undefined') {
-          alert(event.reason)
-        } else {
-          alert('You have been disconnected. Please restart the page\n\nVous avez été déconnecté. Veuillez SVP recharger la page')
-        }
+    consola.log('Server is CLOSING TCP connection')
+    if (socket.readyState === WebSocket.CLOSED) {
+      consola.log('TCP connection to WebSocket server is CLOSED')
+      if (typeof event.reason !== 'undefined') {
+        alert(event.reason)
+      } else {
+        alert('You have been disconnected. Please restart the page\n\nVous avez été déconnecté. Veuillez SVP recharger la page')
       }
     }
   }
