@@ -66,10 +66,11 @@
   </form>
 </template>
 
-<script>
+<script lang="ts">
 import consola from 'consola'
 import { connect, send } from '~/middleware/websocket'
-export default {
+import Vue from 'vue'
+export default Vue.extend({
   props: {
     content: {
       type: Object,
@@ -100,5 +101,5 @@ export default {
       consola.log('Sending form data to websocket server...')
     }
   }
-}
+})
 </script>

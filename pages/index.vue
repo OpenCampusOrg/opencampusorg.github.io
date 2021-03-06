@@ -18,9 +18,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import i18n from '~/assets/i18n'
-export default {
+export default Vue.extend({
   data () {
     return {
       lang: 'EN',
@@ -79,16 +80,16 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style>
-  .navbar ::selection {
-    color: none;
-    background: none;
-  }
+.navbar ::selection {
+  color: none
+  background: none
+}
 
-  .container {
-    background: none;
-  }
+.container {
+  background: none
+}
 </style>

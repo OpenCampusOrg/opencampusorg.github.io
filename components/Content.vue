@@ -11,8 +11,9 @@
   </section>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
   props: {
     content: {
       type: Object,
@@ -38,7 +39,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style scoped>

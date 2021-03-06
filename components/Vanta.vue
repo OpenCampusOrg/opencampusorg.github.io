@@ -2,10 +2,10 @@
   <div ref="vantaRef" class="h-100 w-100 position-fixed bg-body" />
 </template>
 
-<script>
+<script lang="ts">
 import vantaNet from 'vanta/src/vanta.net'
-
-export default {
+import Vue from 'vue'
+export default Vue.extend({
   async mounted () {
     this.vantaEffect = await vantaNet({
       el: this.$refs.vantaRef,
@@ -25,5 +25,5 @@ export default {
       this.vantaEffect.destroy()
     }
   }
-}
+})
 </script>
