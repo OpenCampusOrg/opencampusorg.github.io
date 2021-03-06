@@ -68,8 +68,8 @@
 
 <script lang="ts">
 import consola from 'consola'
-import { connect, send } from '~/middleware/websocket'
 import Vue from 'vue'
+import { connect, send } from '~/middleware/websocket'
 export default Vue.extend({
   props: {
     content: {
