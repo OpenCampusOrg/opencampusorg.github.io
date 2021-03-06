@@ -21,7 +21,7 @@ server.listen(port, host, () =>
   consola.log(`\r\n\
 \t╭───────────────────────────────────────╮\r\n\
 \t│                                       │\r\n\
-\t│   Nuxt @ ${config.version !== undefined ? config.version : 'latest'}                     │\r\n\
+\t│   Nuxt @ ${config.version !== undefined ? config.version : 'latest'}                      │\r\n\
 \t│                                       │\r\n\
 \t│   ▸ Environment: ${config.dev ? 'development' : 'production '}          │\r\n\
 \t│   ▸ Rendering:   ${config.ssr ? 'server-side' : 'client-side'}          │\r\n\
