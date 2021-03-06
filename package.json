@@ -2,7 +2,7 @@
   "name": "lelab.space",
   "version": "1.0.0",
   "description": "The community website",
-  "main": "api/app.js",
+  "main": "api/index.js",
   "licence": "MPL-2.0",
   "private": true,
   "keywords": [
@@ -28,7 +28,7 @@
   "dependencies": {
     "cross-env": "^7.0.3",
     "mdbvue": "^6.7.2",
-    "mongodb": "^3.6.1",
+    "mongodb": "^3.6.3",
     "nuxt": "latest",
     "spdy": "^4.0.2",
     "vanta": "^0.5.21",
@@ -53,6 +53,7 @@
     "eslint-loader": "^4.0.2",
     "eslint-plugin-html": "^6.1.1",
     "eslint-plugin-nuxt": "^1.0.0",
+    "express": "^4.17.1",
     "push-dir": "^0.4.1"
   },
   "optionalDependencies": {

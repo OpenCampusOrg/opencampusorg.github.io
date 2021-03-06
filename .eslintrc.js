@@ -13,13 +13,6 @@ module.exports = {
   ],
   plugins: [
   ],
-  settings: {
-    'import/resolver': {
-      webpack: {
-        config: 'build/webpack.base.conf.js'
-      }
-    }
-  },
   // add your custom rules here
   rules: {
     'nuxt/no-cjs-in-config': 0

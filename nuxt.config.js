@@ -63,6 +63,12 @@ module.exports = {
     '@nuxtjs/fontawesome',
     '@nuxtjs/pwa'
   ],
+  /**
+   * Server middleware
+   */
+  serverMiddleware: {
+    '/api': '~/api'
+  },
   /*
   ** Font Awesome
   */
