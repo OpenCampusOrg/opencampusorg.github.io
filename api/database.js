@@ -32,7 +32,9 @@ module.exports = class Database {
       },
       async (err, client) => {
         assert(err, null)
-        consola.log('Connected sucessfully to database server')
+        if (process.env.NODE_ENV !== 'production') {
+          consola.log('Connected sucessfully to database server')
+        }
         this.db = await client.db(this.dbName)
         await callback(client, this.dbName)
       })
@@ -64,7 +66,9 @@ module.exports = class Database {
     // Insert some documents
     await collection.insertMany(objects, async (err, result) => {
       assert(err, null)
-      consola.log('Inserted', collection, 'into the collection')
+      if (process.env.NODE_ENV !== 'production') {
+        consola.log('Inserted', collection, 'into the collection')
+      }
       await callback(result)
     })
   }
