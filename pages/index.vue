@@ -85,11 +85,11 @@ export default Vue.extend({
 
 <style>
 .navbar ::selection {
-  color: none
-  background: none
+  color: none;
+  background: none;
 }
 
 .container {
-  background: none
+  background: none;
 }
 </style>
