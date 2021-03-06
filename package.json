@@ -19,13 +19,14 @@
   "scripts": {
     "dev": "node api/app.js",
     "build": "nuxt build",
-    "start": "env NODE_ENV=production node api/app.js",
+    "start": "cross-env NODE_ENV=production node api/app.js",
     "generate": "nuxt generate",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "jquery": "^3.5.1",
     "mdbvue": "^6.7.2",
     "mongodb": "^3.6.1",
