@@ -69,7 +69,6 @@
 <script lang="ts">
 import consola from 'consola'
 import Vue from 'vue'
-import { connect, send } from '~/middleware/websocket'
 export default Vue.extend({
   props: {
     content: {
@@ -90,16 +89,15 @@ export default Vue.extend({
       }
     }
   },
-  beforeMount () {
-    connect(location.protocol, location.hostname, location.port)
-  },
   methods: {
     submit () {
       this.form.data.handler = 'newsletter'
       send(this.form.data)
       delete this.form
-      consola.log('Sending form data to websocket server...')
+      consola.log('Sending form data...')
     }
   }
 })
+
+function send (props) {}
 </script>

@@ -5,7 +5,6 @@ const { dependencies } = require('../package-lock.json')
 const app = require('./nuxt')
 const redirect = require('./redirect')
 const server = require('./http')(app)
-const websocket = require('./websocket')
 
 config.version = 'v' + dependencies.nuxt.version
 
@@ -14,7 +13,6 @@ const { host, port } = {
   port: process.env.PORT || '5500'
 }
 
-websocket({ server })
 redirect(port)
 
 server.listen(port, host, () =>
