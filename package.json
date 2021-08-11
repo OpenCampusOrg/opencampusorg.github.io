@@ -17,8 +17,8 @@
     "hackerspace"
   ],
   "scripts": {
-    "dev": "backpack dev",
-    "build": "nuxt build && backpack build",
+    "dev": "node api/app.js",
+    "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node build/main.js",
     "generate": "nuxt generate",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
@@ -46,7 +46,6 @@
     "@nuxtjs/pwa": "^3.3.4",
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
-    "backpack-core": "^0.8.4",
     "core-js": "^3.8.1",
     "eslint": "^7.5.0",
     "eslint-import-resolver-webpack": "^0.13.0",
