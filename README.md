@@ -6,6 +6,9 @@
 # install dependencies
 $ npm install
 
+# upgrade dependencies
+$ npm upgrade
+
 # serve with hot reload at localhost:3000
 $ npm run dev
 
