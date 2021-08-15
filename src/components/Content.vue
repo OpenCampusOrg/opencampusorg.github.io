@@ -3,7 +3,7 @@
     <h1>{{ content.motto }}</h1>
     <h2>{{ content.prop }}</h2>
     <ul v-if="content.QA" class="container list-group">
-      <li v-for="{question,answer} in content.QA" :key="question" class="col-sm list-group-item">
+      <li v-for="{question,answer} in content.QA" :key="question" class="list-group-item">
         <p>{{ question }}</p>
         <p>{{ answer }}</p>
       </li>
@@ -44,14 +44,23 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
+@import "@/../mdb/scss/standard/bootstrap/vendor/rfs";
+
 h1, h2 {
   padding: 0.5em;
 }
 
+h1 {
+  @include font-size(2em);
+}
+
+h2 {
+  @include font-size(1.5em);
+}
+
 .list-group-item, .list-group-item p {
-  display: block;
-  font-size: x-large;
+  @include font-size(large);
   opacity: 80%;
 }
 </style>
