@@ -10,8 +10,8 @@
       <font-awesome-icon :icon="['fas','hashtag']" size="xs" />
       <span>IRC</span>
     </a>
-    <a href="#" class="meetup bg-light">
-      <font-awesome-icon :icon="['fab','meetup']" size="2x" />
+    <a href="#" class="twitch text-light">
+      <font-awesome-icon :icon="['fab','twitch']" size="2x" />
     </a>
   </nav>
 </template>
@@ -50,13 +50,14 @@ nav a {
 .irc {
   color: var(--green);
   font-style: normal;
+  line-height: 2em;
 }
 
 .irc:hover {
   text-decoration: none;
 }
 
-.meetup {
-  color: var(--red);
+.twitch {
+  background: var(--purple);
 }
 </style>
