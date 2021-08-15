@@ -2,9 +2,15 @@
   <div ref="vanta" class="h-100 w-100 position-fixed bg-body" />
 </template>
 
-<script lang='js'>
-import vantaNet from 'vanta/src/vanta.net'
+<script lang='ts'>
+import vantaNet from 'vanta/dist/vanta.net.min'
+import type { Effect } from 'vanta/dist/vanta.net.min'
 import { defineComponent } from 'vue'
+declare global {
+  interface Window {
+    vantaEffect: Effect
+  }
+}
 export default defineComponent({
   async mounted () {
     window.vantaEffect = await vantaNet({

@@ -3,7 +3,7 @@
   <header class="navbar">
     <nav class="d-flex flex-nowrap">
       <font-awesome-icon :icon="['fas','tools']" size="2x" />
-      <a class="navbar-brand navbar-light" href="#">Hackerspace LeLab</a>
+      <a class="navbar-brand navbar-light" href="#">Labspace</a>
     </nav>
     <National :country="country" :lang="lang" @click="translate()" />
   </header>
