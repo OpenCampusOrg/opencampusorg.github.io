@@ -15,6 +15,7 @@
     "baseUrl": ".",
     "types": [
       "node",
+      "node-sass",
       "webpack-env"
     ],
     "paths": {

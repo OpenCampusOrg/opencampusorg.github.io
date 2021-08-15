@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar-toggler">
-    <a class="navbar-brand navbar-light" href="#">{{ lang }}</a>
+    <a class="navbar-brand d-inline navbar-light" href="#">{{ lang }}</a>
     <i class="flag" :class="country" />
   </nav>
 </template>

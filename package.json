@@ -1,8 +1,8 @@
 {
   "name": "hackerspace-lelab.github.io",
-  "description": "shrink-to-fit=yes",
   "version": "1.1.0",
   "private": true,
+  "description": "shrink-to-fit=yes",
   "scripts": {
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
     "serve": "vue-cli-service serve",
@@ -17,7 +17,7 @@
   "dependencies": {
     "@vue/cli": "^4.5.13",
     "core-js": "^3.8.3",
-    "mdbvue": "6.7.3",
+    "mdb-vue-ui-kit": "^1.0.0-beta7",
     "register-service-worker": "^1.7.2",
     "vanta": "^0.5.21",
     "vue": "^3.2.0-beta.8"
@@ -27,6 +27,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/vue-fontawesome": "^3.0.0-4",
+    "@types/node-sass": "^4.11.2",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
     "@vue/cli-plugin-babel": "~5.0.0-beta.3",
@@ -36,15 +37,15 @@
     "@vue/cli-service": "~5.0.0-beta.3",
     "@vue/compiler-sfc": "^3.0.4",
     "@vue/eslint-config-typescript": "^7.0.0",
-    "consola": "^2.15.3",
     "eslint": "^7.20.0",
     "eslint-plugin-vue": "^7.2.0",
     "lint-staged": "^10.5.4",
+    "node-sass": "^6.0.1",
     "push-dir": "^0.4.1",
     "sass": "^1.32.7",
     "sass-loader": "^11.0.1",
     "typescript": "~4.1.5",
-    "vue-cli-plugin-mdb": "~2.1.0"
+    "vue-cli-plugin-mdb5": "~1.2.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"

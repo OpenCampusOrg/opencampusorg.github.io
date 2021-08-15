@@ -48,7 +48,7 @@ nav a {
 }
 
 .irc {
-  color: var(--green);
+  color: var(--mdb-green);
   font-style: normal;
   line-height: 2em;
 }
@@ -58,6 +58,6 @@ nav a {
 }
 
 .twitch {
-  background: var(--purple);
+  background: var(--mdb-purple);
 }
 </style>
