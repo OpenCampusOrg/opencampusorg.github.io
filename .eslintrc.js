@@ -1,20 +1,18 @@
 module.exports = {
   root: true,
   env: {
-    browser: true,
     node: true
   },
+  'extends': [
+    'plugin:vue/vue3-essential',
+    'eslint:recommended',
+    '@vue/typescript/recommended'
+  ],
   parserOptions: {
-    parser: 'babel-eslint'
+    ecmaVersion: 2020
   },
-  extends: [
-    '@nuxtjs',
-    'plugin:nuxt/recommended'
-  ],
-  plugins: [
-  ],
-  // add your custom rules here
   rules: {
-    'nuxt/no-cjs-in-config': 0
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
   }
 }
