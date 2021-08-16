@@ -1,63 +1,70 @@
 <template>
-  <nav>
-    <a href="#" class="twitter bg-primary text-light">
-      <font-awesome-icon :icon="['fab','twitter']" size="2x" />
-    </a>
-    <a href="#" class="telegram bg-info text-light">
-      <font-awesome-icon :icon="['fab','telegram']" size="2x" />
-    </a>
-    <a href="#" class="irc bg-dark">
-      <font-awesome-icon :icon="['fas','hashtag']" size="xs" />
+  <MDBBtnGroup vertical aria-label="Vertical social media bar">
+    <MDBBtn tag="a" class="twitter text-light" color="primary">
+      <MDBIcon size="2x" icon="twitter" iconStyle="fab"/>
+    </MDBBtn>
+    <MDBBtn tag="a" class="telegram text-light" color="info">
+      <MDBIcon size="2x" icon="telegram" iconStyle="fab"/>
+    </MDBBtn>
+    <MDBBtn tag="a" size="2x" class="irc" color="dark">
       <span>IRC</span>
-    </a>
-    <a href="#" class="twitch text-light">
-      <font-awesome-icon :icon="['fab','twitch']" size="2x" />
-    </a>
-  </nav>
+      <MDBIcon icon="hashtag" iconStyle="fas"/>
+    </MDBBtn>
+    <MDBBtn tag="a" class="twitch text-gray-100" color="secondary">
+      <MDBIcon size="2x" icon="twitch" iconStyle="fab"/>
+    </MDBBtn>
+  </MDBBtnGroup>
 </template>
 
 <script lang='ts'>
 import { defineComponent } from 'vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { MDBBtn, MDBBtnGroup, MDBIcon } from 'mdb-vue-ui-kit'
 export default defineComponent({
   name: 'MediaBar',
-  components: { FontAwesomeIcon }
+  components: { MDBBtn, MDBBtnGroup, MDBIcon }
 })
 </script>
 
 
-<style lang="scss" scoped>
-  ::selection {
-    color: none;
-    background: none;
-  }
+<style lang='scss' scoped>
+@import 'mdb/scss/standard/bootstrap/vendor/rfs';
+@import 'mdb/scss/standard/bootstrap/functions';
+@import 'mdb/scss/standard/bootstrap/variables';
 
-nav {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
+::selection {
+  color: none;
+  background: none;
 }
 
-/* Style the icon bar links */
-nav a {
-  display: block;
-  text-align: center;
-  padding: 1em;
+.btn-group-vertical {
+  position: fixed !important;
+  top: 40% !important;
+  margin: 0;
+}
+
+.btn-group-vertical a:hover {
   transition: all 0.3s ease;
-  font-size: 20px;
 }
 
 .irc {
-  color: var(--mdb-green);
-  font-style: normal;
+  color: $green;
   line-height: 2em;
 }
 
 .irc:hover {
-  text-decoration: none;
+  color: $green-400;
+}
+
+.hashtag {
+  padding: 0 0;
 }
 
 .twitch {
-  background: var(--mdb-purple);
+  background: $purple;
+}
+
+.twitch:hover {
+  color: $gray-400;
+  background: $purple-600;
 }
 </style>

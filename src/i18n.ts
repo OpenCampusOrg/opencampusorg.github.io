@@ -6,7 +6,7 @@ export default {
    * @param lang language needed for translation
    * @returns translated content
    */
-  translate (lang: string): unknown {
+  translate (lang: string): Record<string, unknown> {
     const { content } = json 
     let index: number
     const str = lang.toLowerCase().substr(0, 2)

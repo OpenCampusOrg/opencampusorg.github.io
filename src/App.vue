@@ -1,24 +1,30 @@
 <template>
   <Vanta />
-  <header class="navbar">
-    <nav class="d-flex flex-nowrap">
-      <font-awesome-icon :icon="['fas','tools']" size="2x" />
+  <header class="navbar" aria-label="Navigation header">
+    <nav class="d-flex flex-nowrap" aria-label="Homepage">
+      <MDBIcon icon="tools" size="2x" iconStyle="fas"/>
       <a class="navbar-brand navbar-light" href="#">Labspace</a>
     </nav>
-    <National :country="country" :lang="lang" @click="translate()" />
+    <National
+    :country="country"
+    @changeCountry="changeCountry($event)"
+    @changeLang="changeLang($event)"
+    />
   </header>
   <Content :content="content" />
-  <span class="container position-relative text-center w-50 text-white">
-    <h2>{{ content.newsletter }}</h2>
-    <Form :content="content" />
-  </span>
+  <Form :content="content" />
   <aside>
     <MediaBar />
   </aside>
+  <footer class="position-relative text-center text-gray-400">
+    <br>
+    &copy; Labspace is a name owned by Steve Huguenin and cannot be used by another hacker group.
+    <br>
+  </footer>
 </template>
 
-<script lang='js'>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+<script lang='ts'>
+import { MDBIcon } from 'mdb-vue-ui-kit'
 import { defineComponent } from 'vue'
 import Content from './components/Content.vue'
 import Form from './components/Form.vue'
@@ -31,53 +37,64 @@ export default defineComponent({
   components: {
     Content,
     Form,
-    FontAwesomeIcon,
+    MDBIcon,
     MediaBar,
     National,
     Vanta
   },
   data () {
     return {
-      lang: 'EN', 
+      lang: 'EN',
       country: 'uk'
     }
   },
   computed: {
     content () {
-      return i18n.translate(this.lang)
+      // this declaration is mandatory with Typescript
+      const lang: string = this.lang
+      return i18n.translate(lang)
     }
   },
   watch: {
-    lang (val) {
-      for (const meta of document.getElementsByTagName('meta')) {
-        if (meta.httpEquiv === 'Content-Language') {
-          meta.content = val.toLowerCase()
-        }
-      }
-      document.documentElement.lang = val.toLowerCase()
+    lang (val: string): void {
+      this.setHTML(val)
     }
   },
   mounted () {
-    const lang = localStorage.getItem('lang')
-    const country = localStorage.getItem('country')
-    const title = localStorage.getItem('title')
-    if (typeof lang === 'string') {
-      this.lang = lang
-    }
-    if (typeof country === 'string') {
-      this.country = country
-    }
-    if (typeof title === 'string') {
-      document.title = title
-    }
+    this.restore()
   },
   updated () {
-    localStorage.setItem('lang', this.lang)
-    localStorage.setItem('country', this.country)
-    localStorage.setItem('title', document.title)
+    this.save()
   },
   methods: {
-    translate () {
+    setHTML(value: string): void {
+      for (const meta of document.getElementsByTagName('meta')) {
+        if (meta.httpEquiv === 'Content-Language') {
+          meta.content = value.toLowerCase()
+        }
+      }
+      document.documentElement.lang = value.toLowerCase()
+    },
+    restore(): void {
+      const lang = localStorage.getItem('lang')
+      const country = localStorage.getItem('country')
+      const title = localStorage.getItem('title')
+      if (typeof lang === 'string') {
+        this.lang = lang
+      }
+      if (typeof country === 'string') {
+        this.country = country
+      }
+      if (typeof title === 'string') {
+        document.title = title
+      }
+    },
+    save(): void {
+      localStorage.setItem('lang', this.lang)
+      localStorage.setItem('country', this.country)
+      localStorage.setItem('title', document.title)
+    },
+    translate (): void {
       if (this.lang === 'FR') {
         this.lang = 'EN'
         this.country = 'uk'
@@ -91,6 +108,12 @@ export default defineComponent({
         this.country = 'uk'
         document.title = 'Join the Labspace'
       }
+    },
+    changeLang (lang: string): void {
+      this.lang = lang
+    },
+    changeCountry (country: string): void {
+      this.country = country
     }
   }
 })
