@@ -3,7 +3,7 @@
     <h1>{{ content.motto }}</h1>
     <h2>{{ content.prop }}</h2>
     <ul v-if="content.QA" class="container list-group">
-      <li v-for="{question,answer} in content.QA" :key="question" class="list-group-item">
+      <li v-for="[ question, answer ] in content.QA" :key="question" class="list-group-item">
         <p>{{ question }}</p>
         <p>{{ answer }}</p>
       </li>

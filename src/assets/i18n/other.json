@@ -2,26 +2,10 @@
 	"motto": "undefined",
 	"prop": "undefined",
 	"QA": [
-		{
-			"question": "undefined",
-			"answer": "undefined"
-		},
-		{
-			"question": "undefined",
-			"answer": "undefined"
-		},
-		{
-			"question": "undefined",
-			"answer": "undefined"
-		},
-		{
-			"question": "undefined",
-			"answer": "undefined"
-		},
-		{
-			"question": "undefined",
-			"answer": "undefined"
-		}
+		[
+			"undefined",
+			"undefined"
+		]
 	],
 	"newsletter": "undefined",
 	"fullname": "undefined",
