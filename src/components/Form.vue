@@ -56,7 +56,7 @@
       >
       <br>
       <input v-model.lazy="form.funding" name="funding" type="checkbox">
-      <pre>&nbsp;</pre>
+      <label>&nbsp;</label>
       <label for="funding">
         {{ content.funding }}
       </label>

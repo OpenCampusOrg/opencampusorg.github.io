@@ -1,6 +1,7 @@
 {
   "name": "hackerspace-lelab.github.io",
   "version": "1.1.0",
+  "description": "The Labspace is a citizen initiative from Neuchâtel that aims to unite innovators, inventors and startups in order to develop and design innovative projects together.",
   "private": true,
   "scripts": {
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",

@@ -64,6 +64,7 @@ export default defineComponent({
     this.restore()
   },
   updated () {
+    this.translate()
     this.save()
   },
   methods: {
@@ -95,18 +96,14 @@ export default defineComponent({
       localStorage.setItem('title', document.title)
     },
     translate (): void {
-      if (this.lang === 'FR') {
-        this.lang = 'EN'
-        this.country = 'uk'
-        document.title = 'Join the Labspace'
-      } else if (this.lang === 'EN') {
-        this.lang = 'FR'
-        this.country = 'fr'
+      switch (this.lang) {
+        case 'FR': {
         document.title = 'Rejoins Labspace'
-      } else {
-        this.lang = 'EN'
-        this.country = 'uk'
+        break
+        } case 'EN': default: {
         document.title = 'Join the Labspace'
+        break
+        }
       }
     },
     changeLang (lang: string): void {

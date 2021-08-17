@@ -1,6 +1,6 @@
 <template>
   <MDBDropdown btnGroup v-model="dropdown">
-    <MDBBtn size="2x" class="bg-info" color="bg-info" :title="language">
+    <MDBBtn size="2x" class="bg-info" color="bg-info" :title="language(country)">
       <MDBIcon :flag="country" />
     </MDBBtn>
     <MDBDropdownToggle split @click="dropdown = !dropdown" />

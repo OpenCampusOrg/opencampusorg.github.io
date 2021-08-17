@@ -7,5 +7,5 @@ import './registerServiceWorker'
 new Promise<Vue>(resolve =>
   resolve(createApp(App))
 ).then(app => {
-  app.mount('#app')
+  app.mount('div')
 })
