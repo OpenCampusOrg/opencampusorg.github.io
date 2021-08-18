@@ -18,7 +18,10 @@
 	"extensions": [
 		"dbaeumer.vscode-eslint",
 		"eamodio.gitlens",
-		"octref.vetur"
+		"octref.vetur",
+		"webhint.vscode-webhint",
+		"eg2.vscode-npm-script",
+		"christian-kohler.npm-intellisense"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
