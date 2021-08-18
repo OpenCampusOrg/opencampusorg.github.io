@@ -1,4 +1,3 @@
-import 'mdb-vue-ui-kit/css/mdb.min.css'
 import { App as Vue, createApp } from 'vue'
 import App from './App.vue'
 import './assets/global.scss'
