@@ -68,18 +68,24 @@ export default defineComponent({
     this.save()
   },
   methods: {
-    setHTML(value: string): void {
+    async setHTML(value: string): Promise<void> {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(`Switch language to ${this.lang}.`)
+      }
       for (const meta of document.getElementsByTagName('meta')) {
         if (meta.httpEquiv === 'Content-Language') {
-          meta.content = value.toLowerCase()
+          meta.content = await value.toLowerCase()
         }
       }
-      document.documentElement.lang = value.toLowerCase()
+      document.documentElement.lang = await value.toLowerCase()
     },
-    restore(): void {
-      const lang = localStorage.getItem('lang')
-      const country = localStorage.getItem('country')
-      const title = localStorage.getItem('title')
+    async restore(): Promise<void> {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Restore language from localeStorage cookie.')
+      }
+      const lang = await localStorage.getItem('lang')
+      const country = await localStorage.getItem('country')
+      const title = await localStorage.getItem('title')
       if (typeof lang === 'string') {
         this.lang = lang
       }
@@ -91,11 +97,17 @@ export default defineComponent({
       }
     },
     save(): void {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Save language to localeStorage cookie.')
+      }
       localStorage.setItem('lang', this.lang)
       localStorage.setItem('country', this.country)
       localStorage.setItem('title', document.title)
     },
     translate (): void {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Translate Title from localeStorage cookie.')
+      }
       switch (this.lang) {
         case 'FR': {
         document.title = 'Rejoins Labspace'

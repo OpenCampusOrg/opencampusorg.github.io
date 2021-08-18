@@ -1,4 +1,4 @@
-import json from './assets/i18n/index.json'
+import index_json from './assets/i18n/index.json'
 
 export default {
   /**
@@ -7,19 +7,12 @@ export default {
    * @returns translated content
    */
   translate (lang: string): Record<string, unknown> {
-    const { content } = json 
-    let index: number
+    const { content } = index_json
     const str = lang.toLowerCase().substr(0, 2)
     switch (str) {
-      case 'fr':
-        index = 2
-        break
-      case 'en':
-        index = 1
-        break
-      default:
-        index = 0
+      case 'fr': return require(`./assets/i18n/${content[2]}`)
+      case 'en': return require(`./assets/i18n/${content[1]}`)
+      default: return require(`./assets/i18n/${content[0]}`)
     }
-    return require(`./assets/i18n/${content[index]}`)
   }
 }

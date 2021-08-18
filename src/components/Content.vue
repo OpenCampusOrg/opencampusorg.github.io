@@ -33,11 +33,11 @@ export default defineComponent({
     this.setQAColor()
   },
   methods: {
-    setQAColor () {
+    async setQAColor (): Promise<void> {
       let i = 0
-      for (const li of document.getElementsByTagName('li')) {
-        li.classList.add(this.colors[i++])
-        i %= this.colors.length
+      for (const li of await document.getElementsByTagName('li')) {
+        li.classList.add(await this.colors[i++])
+        i = await i % this.colors.length
       }
     }
   }

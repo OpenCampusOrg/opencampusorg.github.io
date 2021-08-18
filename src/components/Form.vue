@@ -102,16 +102,19 @@ export default defineComponent({
     }
   },
   methods: {
-    async send (props: Data) {
+    async send (props: Data): Promise<void> {
       await props
     },
-    submit () {
+    async submit (): Promise<void> {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Submit form data.')
+      }
       if (this.form.data !== undefined) {
         this.form.data.handler = 'newsletter'
-        this.send(this.form.data)
+        await this.send(this.form.data)
       }
       this.form.data = undefined
-      if (process.env.NODE_ENV === 'production') {
+      if (process.env.NODE_ENV !== 'production') {
         console.log('Sending form data...')
       }
     }

@@ -35,23 +35,30 @@ export default defineComponent({
     }
   },
   methods: {
-    language (country: string): string {
-      switch (country.toLowerCase().substr(0, 2)) {
+    async language (country: string): Promise<string> {
+      const str = await country.toLowerCase().substr(0, 2)
+      switch (str) {
         case 'uk': return 'English'
         case 'fr': return 'Français'
         default: return 'English'
       }
     },
-    french(): void {
-      this.setLanguage(this.language('fr'), 'fr')
+    async french(): Promise<void> {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(`Set language to ${await this.language('fr')}.`)
+      }
+      this.setLanguage(await this.language('fr'), 'fr')
     },
-    english(): void {
-      this.setLanguage(this.language('uk'), 'uk')
+    async english(): Promise<void> {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(`Set language to ${await this.language('uk')}.`)
+      }
+      this.setLanguage(await this.language('uk'), 'uk')
     },
-    setLanguage (language: string, country: string): void {
+    async setLanguage (language: string, country: string): Promise<void> {
       this.dropdown = false
-      this.$emit('changeLang', language.toUpperCase().substr(0, 2))
-      this.$emit('changeCountry', country.toLowerCase())
+      this.$emit('changeLang', await language.toUpperCase().substr(0, 2))
+      this.$emit('changeCountry', await country.toLowerCase().substr(0, 2))
     }
   }
 })
