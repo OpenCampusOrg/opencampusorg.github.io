@@ -1,16 +1,16 @@
 <template>
   <MDBBtnGroup vertical aria-label="Vertical social media bar">
-    <MDBBtn tag="a" class="twitter text-light" color="primary">
+    <MDBBtn title="twitter" href="#" class="twitter text-light" color="primary">
       <MDBIcon size="2x" icon="twitter" iconStyle="fab"/>
     </MDBBtn>
-    <MDBBtn tag="a" class="telegram text-light" color="info">
+    <MDBBtn title="telegram" href="#" class="telegram text-light" color="info">
       <MDBIcon size="2x" icon="telegram" iconStyle="fab"/>
     </MDBBtn>
-    <MDBBtn tag="a" size="2x" class="irc" color="dark">
+    <MDBBtn title="irc" href="#" size="2x" class="irc" color="dark">
       <span>IRC</span>
       <MDBIcon icon="hashtag" iconStyle="fas"/>
     </MDBBtn>
-    <MDBBtn tag="a" class="twitch text-gray-100" color="secondary">
+    <MDBBtn title="twitch" href="#" class="twitch text-gray-100" color="secondary">
       <MDBIcon size="2x" icon="twitch" iconStyle="fab"/>
     </MDBBtn>
   </MDBBtnGroup>

@@ -1,5 +1,6 @@
 {
   "name": "hackerspace-lelab.github.io",
+  "short_name": "thelab.space",
   "version": "1.1.0",
   "description": "The Labspace is a citizen initiative from Neuchâtel that aims to unite innovators, inventors and startups in order to develop and design innovative projects together.",
   "private": true,
@@ -9,10 +10,6 @@
     "build": "vue-cli-service build && node script/webmanifest.js",
     "lint": "vue-cli-service lint",
     "start": "vue-cli-service serve --open"
-  },
-  "browser": {
-    "fs": false,
-    "path": false
   },
   "dependencies": {
     "@vue/cli": "^4.5.13",
@@ -31,6 +28,7 @@
     "@types/node-sass": "^4.11.2",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
+    "@vue/babel-preset-app": "^4.5.13",
     "@vue/cli-plugin-babel": "~5.0.0-beta.3",
     "@vue/cli-plugin-eslint": "~5.0.0-beta.3",
     "@vue/cli-plugin-pwa": "~5.0.0-beta.3",

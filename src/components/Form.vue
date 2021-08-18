@@ -19,6 +19,7 @@
         class="col-md-4"
         col="4"
         name="birth"
+        :title="content.birthday"
         type="date"
         min="1943-01-01"
         max="2007-12-31"
@@ -55,7 +56,7 @@
         :placeholder="content.phonenumber"
       >
       <br>
-      <input v-model.lazy="form.funding" name="funding" type="checkbox">
+      <input v-model.lazy="form.funding" name="funding" type="checkbox" placeholder="checked">
       <label>&nbsp;</label>
       <label for="funding">
         {{ content.funding }}
