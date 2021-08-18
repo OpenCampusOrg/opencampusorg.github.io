@@ -6,7 +6,7 @@
   "scripts": {
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build && node script/webmanifest.js",
     "lint": "vue-cli-service lint",
     "start": "vue-cli-service serve --open"
   },
