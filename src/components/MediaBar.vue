@@ -27,7 +27,6 @@ export default defineComponent({
 
 
 <style lang='scss' scoped>
-@import 'mdb/scss/standard/bootstrap/vendor/rfs';
 @import 'mdb/scss/standard/bootstrap/functions';
 @import 'mdb/scss/standard/bootstrap/variables';
 
@@ -38,7 +37,7 @@ export default defineComponent({
 
 .btn-group-vertical {
   position: fixed !important;
-  top: 40% !important;
+  top: 50% !important;
   margin: 0;
 }
 

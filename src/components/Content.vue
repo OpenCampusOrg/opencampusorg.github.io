@@ -35,9 +35,9 @@ export default defineComponent({
   methods: {
     async setQAColor (): Promise<void> {
       let i = 0
-      for (const li of await document.getElementsByTagName('li')) {
-        li.classList.add(await this.colors[i++])
-        i = await i % this.colors.length
+      for await (const li of document.getElementsByTagName('li')) {
+        li.classList.add(this.colors[i++])
+        i %= this.colors.length
       }
     }
   }
@@ -45,22 +45,21 @@ export default defineComponent({
 </script>
 
 <style lang='scss' scoped>
-@import "@/../mdb/scss/standard/bootstrap/vendor/rfs";
 
 h1, h2 {
   padding: 0.5em;
 }
 
 h1 {
-  @include font-size(2em);
+  font-size: 2em;
 }
 
 h2 {
-  @include font-size(1.5em);
+  font-size: 1.5em;
 }
 
 .list-group-item, .list-group-item p {
-  @include font-size(large);
+  font-size: large;
   opacity: 80%;
 }
 </style>
