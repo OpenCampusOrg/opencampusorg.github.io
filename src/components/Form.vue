@@ -78,6 +78,7 @@
 
 <script lang='ts'>
 import { defineComponent, reactive } from 'vue'
+import Email from '@/email'
 export default defineComponent({
   name: 'Form',
   props: {
@@ -89,7 +90,7 @@ export default defineComponent({
   setup () {
     let form = reactive({
       name: '',
-      birth: 0,
+      birth: '',
       trade: '',
       email: '',
       phone: '',
@@ -104,7 +105,7 @@ export default defineComponent({
         console.log('Submit form data.')
       }
       if (this.form !== undefined) {
-        send(this.form)
+        Email.send(this.form)
       }
       if (process.env.NODE_ENV !== 'production') {
         console.log('Sending form data...')
@@ -112,8 +113,4 @@ export default defineComponent({
     }
   }
 })
-
-function send(props: Record<string, unknown>) {
-  props
-}
 </script>
