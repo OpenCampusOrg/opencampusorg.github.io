@@ -8,11 +8,11 @@
       <MDBDropdownItem href="#" @click="english">
         <MDBIcon flag="uk" />
         <label>English</label>
-        </MDBDropdownItem>
+      </MDBDropdownItem>
       <MDBDropdownItem href="#" @click="french">
         <MDBIcon flag="fr" />
         <label>Français</label>
-        </MDBDropdownItem>
+      </MDBDropdownItem>
     </MDBDropdownMenu>
   </MDBDropdown>
 </template>
@@ -43,17 +43,21 @@ export default defineComponent({
         default: return 'English'
       }
     },
-    async french(): Promise<void> {
-      if (process.env.NODE_ENV !== 'production') {
-        console.log(`Set language to ${await this.language('fr')}.`)
-      }
-      this.setLanguage(await this.language('fr'), 'fr')
+    french (): void {
+      this.language('fr').then(french => {
+        if (process.env.NODE_ENV !== 'production') {
+          console.log(`Set language to ${french}.`)
+        }
+        this.setLanguage(french, 'fr')
+      })
     },
-    async english(): Promise<void> {
-      if (process.env.NODE_ENV !== 'production') {
-        console.log(`Set language to ${await this.language('uk')}.`)
-      }
-      this.setLanguage(await this.language('uk'), 'uk')
+    english (): void {
+      this.language('uk').then(english => {
+        if (process.env.NODE_ENV !== 'production') {
+          console.log(`Set language to ${english}.`)
+        }
+        this.setLanguage(english, 'uk')
+      })
     },
     async setLanguage (language: string, country: string): Promise<void> {
       this.dropdown = false
