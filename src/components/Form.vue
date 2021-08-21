@@ -77,7 +77,7 @@
 </template>
 
 <script lang='ts'>
-import { defineComponent } from 'vue'
+import { defineComponent, reactive } from 'vue'
 export default defineComponent({
   name: 'Form',
   props: {
@@ -86,35 +86,26 @@ export default defineComponent({
       default: null
     }
   },
-  data () {
-    return {
-      form: {
-        data: { 
-          handler: ''
-        },
-        name: '',
-        birth: '',
-        trade: '',
-        email: '',
-        phone: '',
-        funding: false,
-        message: ''
-      } as Form
-    }
+  setup () {
+    let form = reactive({
+      name: '',
+      birth: 0,
+      trade: '',
+      email: '',
+      phone: '',
+      funding: false,
+      message: ''
+    })
+    return { form }
   },
   methods: {
-    async send (props: Data): Promise<void> {
-      await props
-    },
-    async submit (): Promise<void> {
+    submit (): void {
       if (process.env.NODE_ENV !== 'production') {
         console.log('Submit form data.')
       }
-      if (this.form.data !== undefined) {
-        this.form.data.handler = 'newsletter'
-        await this.send(this.form.data)
+      if (this.form !== undefined) {
+        send(this.form)
       }
-      this.form.data = undefined
       if (process.env.NODE_ENV !== 'production') {
         console.log('Sending form data...')
       }
@@ -122,13 +113,7 @@ export default defineComponent({
   }
 })
 
-interface Data {
-  handler: string
-  [key: string]: boolean|number|string
-}
-
-interface Form {
-  data: Data|undefined,
-  [key: string]: boolean|number|string|Data|undefined
+function send(props: Record<string, unknown>) {
+  props
 }
 </script>

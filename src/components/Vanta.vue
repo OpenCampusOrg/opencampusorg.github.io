@@ -12,8 +12,8 @@ declare global {
   }
 }
 export default defineComponent({
-  async mounted () {
-    window.vantaEffect = await vantaNet({
+  mounted () {
+    window.vantaEffect = vantaNet({
       el: this.$refs.vanta,
       mouseControls: true,
       touchControls: true,
