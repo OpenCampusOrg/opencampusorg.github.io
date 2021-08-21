@@ -23,9 +23,10 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'National',
   components: { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon, MDBBtn },
-  data () {
+  setup () {
+    let dropdown = false
     return {
-      dropdown: false
+      dropdown
     }
   },
   props: {

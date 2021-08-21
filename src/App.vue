@@ -42,10 +42,12 @@ export default defineComponent({
     National,
     Vanta
   },
-  data () {
+  setup () {
+    let lang = 'EN'
+    let country = 'uk'
     return {
-      lang: 'EN',
-      country: 'uk'
+      lang,
+      country
     }
   },
   computed: {

@@ -21,9 +21,10 @@ export default defineComponent({
       default: null
     }
   },
-  data () {
+  setup () {
+    const colors = ['list-group-item-primary', 'list-group-item-secondary', 'list-group-item-danger', 'list-group-item-warning', 'list-group-item-info', 'list-group-item-light', 'list-group-item-dark']
     return {
-      colors: ['list-group-item-primary', 'list-group-item-secondary', 'list-group-item-danger', 'list-group-item-warning', 'list-group-item-info', 'list-group-item-light', 'list-group-item-dark']
+      colors
     }
   },
   mounted () {
