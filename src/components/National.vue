@@ -19,12 +19,14 @@
 
 <script lang='ts'>
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon, MDBBtn } from 'mdb-vue-ui-kit'
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+import Country from '@/library/country'
+import Language from '@/library/language'
 export default defineComponent({
   name: 'National',
   components: { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon, MDBBtn },
   setup () {
-    let dropdown = false
+    let dropdown = ref(false)
     return {
       dropdown
     }
@@ -32,38 +34,31 @@ export default defineComponent({
   props: {
     country: {
       type: String,
-      default: 'uk'
+      default: Country.UnitedKingdom
     }
   },
   methods: {
-    async language (country: string): Promise<string> {
-      const str = await country.toLowerCase().substr(0, 2)
-      switch (str) {
-        case 'uk': return 'English'
-        case 'fr': return 'Français'
-        default: return 'English'
-      }
+    language (country: string): string {
+      return Country.getLanguage(Country.from(country))
     },
     french (): void {
-      this.language('fr').then(french => {
-        if (process.env.NODE_ENV !== 'production') {
-          console.log(`Set language to ${french}.`)
-        }
-        this.setLanguage(french, 'fr')
-      })
+      const french = this.language(Country.France)
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Set language to', french, '.')
+      }
+      this.setLanguage(Language.from('FR'), Country.France)
     },
     english (): void {
-      this.language('uk').then(english => {
-        if (process.env.NODE_ENV !== 'production') {
-          console.log(`Set language to ${english}.`)
-        }
-        this.setLanguage(english, 'uk')
-      })
+      const english = this.language(Country.UnitedKingdom)
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Set language to', english, '.')
+      }
+      this.setLanguage(Language.from('EN'), Country.UnitedKingdom)
     },
-    async setLanguage (language: string, country: string): Promise<void> {
+    setLanguage (language: string, country: string): void {
       this.dropdown = false
-      this.$emit('changeLang', await language.toUpperCase().substr(0, 2))
-      this.$emit('changeCountry', await country.toLowerCase().substr(0, 2))
+      this.$emit('changeLang', language)
+      this.$emit('changeCountry', country)
     }
   }
 })

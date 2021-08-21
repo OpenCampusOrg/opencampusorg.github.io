@@ -1,4 +1,6 @@
 import index_json from './assets/i18n/index.json'
+import Language from '@/library/language'
+import type { language } from './library/language'
 
 export default {
   /**
@@ -6,12 +8,14 @@ export default {
    * @param lang language needed for translation
    * @returns translated content
    */
-  translate (lang: string): Record<string, unknown> {
+  translate (lang: language): Record<string, unknown> {
     const { content } = index_json
-    const str = lang.toLowerCase().substr(0, 2)
-    switch (str) {
-      case 'fr': return require(`./assets/i18n/${content[2]}`)
-      case 'en': return require(`./assets/i18n/${content[1]}`)
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('i18n switched language to', lang)
+    }
+    switch (lang) {
+      case Language.French: return require(`./assets/i18n/${content[2]}`)
+      case Language.English: return require(`./assets/i18n/${content[1]}`)
       default: return require(`./assets/i18n/${content[0]}`)
     }
   }

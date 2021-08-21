@@ -25,13 +25,15 @@
 
 <script lang='ts'>
 import { MDBIcon } from 'mdb-vue-ui-kit'
-import { defineComponent } from 'vue'
+import { defineComponent, Ref, ref } from 'vue'
 import Content from './components/Content.vue'
 import Form from './components/Form.vue'
 import MediaBar from './components/MediaBar.vue'
 import National from './components/National.vue'
 import Vanta from './components/Vanta.vue'
 import i18n from './i18n'
+import Country from '@/library/country'
+import Language from '@/library/language'
 export default defineComponent({
   name: 'App',
   components: {
@@ -43,8 +45,8 @@ export default defineComponent({
     Vanta
   },
   setup () {
-    let lang = 'EN'
-    let country = 'uk'
+    let lang: Ref<string> = ref(Language.English)
+    let country: Ref<string> = ref(Country.UnitedKingdom)
     return {
       lang,
       country
@@ -54,7 +56,7 @@ export default defineComponent({
     content () {
       // this declaration is mandatory with Typescript
       const lang: string = this.lang
-      return i18n.translate(lang)
+      return i18n.translate(Language.from(lang))
     }
   },
   watch: {
@@ -70,29 +72,30 @@ export default defineComponent({
     this.save()
   },
   methods: {
-    async setHTML(value: string): Promise<void> {
+    setHTML(value: string): void {
       if (process.env.NODE_ENV !== 'production') {
-        console.log(`Switch language to ${this.lang}.`)
+        console.log('Switch language to', this.lang, '.')
       }
+      value = value.toLowerCase()
       for (const meta of document.getElementsByTagName('meta')) {
         if (meta.httpEquiv === 'Content-Language') {
-          meta.content = await value.toLowerCase()
+          meta.content = value
         }
       }
-      document.documentElement.lang = await value.toLowerCase()
+      document.documentElement.lang = value
     },
-    async restore(): Promise<void> {
+    restore(): void {
       if (process.env.NODE_ENV !== 'production') {
         console.log('Restore language from localeStorage cookie.')
       }
-      const lang = await localStorage.getItem('lang')
-      const country = await localStorage.getItem('country')
-      const title = await localStorage.getItem('title')
+      const lang = localStorage.getItem('lang')
+      const country = localStorage.getItem('country')
+      const title = localStorage.getItem('title')
       if (typeof lang === 'string') {
-        this.lang = lang
+        this.lang = Language.from(lang)
       }
       if (typeof country === 'string') {
-        this.country = country
+        this.country = Country.from(country)
       }
       if (typeof title === 'string') {
         document.title = title
@@ -108,23 +111,28 @@ export default defineComponent({
     },
     translate (): void {
       if (process.env.NODE_ENV !== 'production') {
-        console.log('Translate Title from localeStorage cookie.')
+        console.log('Translate Title.')
       }
       switch (this.lang) {
-        case 'FR': {
-        document.title = 'Rejoins Labspace'
-        break
-        } case 'EN': default: {
-        document.title = 'Join the Labspace'
-        break
+        case Language.French: {
+          document.title = 'Rejoins Labspace'
+          break
+        }
+        case Language.English: {
+          document.title = 'Join the Labspace'
+          break
+        }
+        default: {
+          document.title = process.env.VUE_APP_NAME || 'hackerspace-lelab.github.io'
+          break
         }
       }
     },
     changeLang (lang: string): void {
-      this.lang = lang
+      this.lang = Language.from(lang)
     },
     changeCountry (country: string): void {
-      this.country = country
+      this.country = Country.from(country)
     }
   }
 })

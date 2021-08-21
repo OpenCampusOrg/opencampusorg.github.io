@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import i18n from '@/i18n'
+import Language from '@/library/language'
 import { evaluate } from './util/file'
 
 const dir = path.resolve(__dirname, '..', 'src', 'assets', 'i18n')
@@ -32,16 +33,16 @@ const other = new Promise<string>((resolve, reject) => {
 describe('i18n.ts', () => {
   it('Test translate', () => {
     french.then(fr => {
-      const expected = JSON.stringify(i18n.translate('FR'))
-      expect(expected).toBe(fr)
-    })
+      const expected = JSON.stringify(i18n.translate(Language.French))
+      expect(expected).toBe<string>(fr)
+    }).catch(reason => reason)
     english.then(en => {
-      const expected = JSON.stringify(i18n.translate('EN'))
-      expect(expected).toBe(en)
-    })
+      const expected = JSON.stringify(i18n.translate(Language.English))
+      expect(expected).toBe<string>(en)
+    }).catch(reason => reason)
     other.then(_ => {
-      const expected = JSON.stringify(i18n.translate('ZH'))
-      expect(expected).toBe(_)
-    })
+      const expected = JSON.stringify(i18n.translate(Language.Other))
+      expect(expected).toBe<string>(_)
+    }).catch(reason => reason)
   })
 })
