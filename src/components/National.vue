@@ -7,11 +7,11 @@
     <MDBDropdownMenu aria-labelledby="dropdownMenuLink">
       <MDBDropdownItem href="#" @click="english">
         <MDBIcon flag="uk" />
-        <label>English</label>
+        <span>English</span>
       </MDBDropdownItem>
       <MDBDropdownItem href="#" @click="french">
         <MDBIcon flag="fr" />
-        <label>Français</label>
+        <span>Français</span>
       </MDBDropdownItem>
     </MDBDropdownMenu>
   </MDBDropdown>

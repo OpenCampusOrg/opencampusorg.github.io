@@ -1,5 +1,5 @@
 <template>
-  <div ref="vanta" class="h-100 w-100 position-fixed bg-body" />
+  <div ref="vanta" class="h-100 w-100 position-fixed" />
 </template>
 
 <script lang='ts'>

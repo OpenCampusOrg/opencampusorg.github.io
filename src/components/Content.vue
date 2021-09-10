@@ -2,12 +2,12 @@
   <section id="section" v-if="content" class="container position-relative text-white" aria-label="Text section">
     <h1>{{ content.motto }}</h1>
     <h2>{{ content.prop }}</h2>
-    <ul v-if="content.QA" class="container list-group" aria-label="Q+A">
-      <li v-for="[ question, answer ] in content.QA" :key="question" class="list-group-item">
+    <section v-if="content.QA" class="container list-group" aria-label="Q+A">
+      <article v-for="[ question, answer ] in content.QA" :key="question" class="list-group-item">
         <p>{{ question }}</p>
         <p>{{ answer }}</p>
-      </li>
-    </ul>
+      </article>
+    </section>
   </section>
 </template>
 
@@ -36,31 +36,11 @@ export default defineComponent({
   methods: {
     setQAColor (): void {
       let i = 0
-      for (const li of document.getElementsByTagName('li')) {
-        li.classList.add(this.colors[i++])
+      for (const div of document.getElementsByClassName('list-group-item')) {
+        div.classList.add(this.colors[i++])
         i %= this.colors.length
       }
     }
   }
 })
 </script>
-
-<style lang='scss' scoped>
-
-h1, h2 {
-  padding: 0.5em;
-}
-
-h1 {
-  font-size: 2em;
-}
-
-h2 {
-  font-size: 1.5em;
-}
-
-.list-group-item, .list-group-item p {
-  font-size: large;
-  opacity: 80%;
-}
-</style>

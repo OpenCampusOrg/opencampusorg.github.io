@@ -3,6 +3,8 @@
 @import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
 @import '@fortawesome/fontawesome-free/css/solid.min.css';
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+@import 'mdb/scss/standard/bootstrap/functions';
+@import 'mdb/scss/standard/bootstrap/variables';
 
 body {
   background: black;
@@ -12,9 +14,43 @@ root {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
-.navbar {
+header {
+  display: flex;
+  justify-content: space-between;
   padding-left: 1rem;
   padding-right: .5rem;
+}
+
+form {
+  display: table;
+}
+
+form p {
+  display: table-row;
+}
+
+label {
+  display: table-cell;
+}
+
+input {
+  display: table-cell;
+}
+
+#newsletter {
+  padding-block: 1rem;
+}
+
+section > h1, section > h2 {
+  padding: 0.5em;
+}
+
+section h1 {
+  font-size: 2em;
+}
+
+section h2 {
+  font-size: 1.5em;
 }
 
 .navbar ::selection {
@@ -24,4 +60,51 @@ root {
 
 .container {
   background: none;
+}
+
+.btn-group {
+  flex-direction: row;
+  align-items: center;
+}
+
+.btn-group ::selection {
+  color: none;
+  background: none;
+}
+
+.btn-group-vertical {
+  flex-direction: column;
+  position: fixed !important;
+  top: 50% !important;
+}
+
+.btn-group-vertical a:hover {
+  transition: all 0.3s ease;
+}
+
+.list-group-item, .list-group-item p {
+  font-size: large;
+  opacity: 80%;
+}
+
+.irc {
+  color: $green;
+  line-height: 2em;
+}
+
+.irc:hover {
+  color: $green-400;
+}
+
+.hashtag {
+  padding: 0 0;
+}
+
+.twitch {
+  background: $purple;
+}
+
+.twitch:hover {
+  color: $gray-400;
+  background: $purple-600;
 }
