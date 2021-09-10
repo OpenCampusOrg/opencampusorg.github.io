@@ -21,7 +21,9 @@
 		"octref.vetur",
 		"webhint.vscode-webhint",
 		"eg2.vscode-npm-script",
-		"christian-kohler.npm-intellisense"
+		"christian-kohler.npm-intellisense",
+		"esbenp.prettier-vscode",
+		"visualstudioexptteam.vscodeintellicode"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
