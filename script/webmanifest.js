@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const manifest_json = require('~/dist/manifest.json');
-manifest_json.short_name = require('~/package.json').short_name;
+const manifest_json = require('../dist/manifest.json');
+manifest_json.short_name = require('../package.json').short_name;
 
 fs.writeFileSync(path.resolve(__dirname, '..', 'dist', 'manifest.json'), JSON.stringify(manifest_json), 'utf-8');
 
