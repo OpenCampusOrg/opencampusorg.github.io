@@ -5,7 +5,7 @@
   "description": "The Labspace is a citizen initiative from Neuchâtel that aims to unite innovators, inventors and startups in order to develop and design innovative projects together.",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && node script/webmanifest.js",
+    "build": "vue-cli-service build && node script/webmanifest.js && echo www.open-campus.org > dist/CNAME",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
