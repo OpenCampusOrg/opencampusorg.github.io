@@ -1,5 +1,5 @@
 import index_json from './assets/i18n/index.json'
-import Language from '@/library/language'
+import Language from './library/language'
 import type { language } from './library/language'
 
 export default {

@@ -32,8 +32,8 @@ import MediaBar from './components/MediaBar.vue'
 import National from './components/National.vue'
 import Vanta from './components/Vanta.vue'
 import i18n from './i18n'
-import Country from '@/library/country'
-import Language from '@/library/language'
+import Country from './library/country'
+import Language from './library/language'
 export default defineComponent({
   name: 'App',
   components: {
