@@ -1,34 +1,28 @@
 import fs from 'fs'
+import fetch from 'node-fetch'
 import path from 'path'
+import yaml from 'yaml'
 import i18n from '@/i18n'
 import Language from '@/library/language'
-import { evaluate } from './util/file'
 
-const dir = path.resolve(__dirname, '..', 'src', 'assets', 'i18n')
+function port (): string {
+  const { services } = yaml.parse(fs.readFileSync(path.resolve('..', '.devcontainer', 'docker-compose.yml')).toString())
+  return Object.keys(services.strapi.port)[0]
+}
 
-const french = new Promise<string>((resolve, reject) => {
-  const file = path.resolve(dir, 'french.json')
-  evaluate(file, resolve, reject)
+const uri = `https://localhost:${port()}/i18n`
+
+const getContent = (lang: string): Promise<string> => Promise.resolve<string>(uri).then(async uri => {
+  const url = uri + `/${lang}.json`
+  const response = await fetch(url)
+  return await response.text()
 })
-.then(fs.readFileSync)
-.then(JSON.stringify)
-.catch(reason => reason)
 
-const english = new Promise<string>((resolve, reject) => {
-  const file = path.resolve(dir, 'english.json')
-  evaluate(file, resolve, reject)
-})
-.then(fs.readFileSync)
-.then(JSON.stringify)
-.catch(reason => reason)
+const french = getContent('french')
 
-const other = new Promise<string>((resolve, reject) => {
-  const file = path.resolve(dir, 'other.json')
-  evaluate(file, resolve, reject)
-})
-.then(fs.readFileSync)
-.then(JSON.stringify)
-.catch(reason => reason)
+const english = getContent('english')
+
+const other = getContent('other')
 
 describe('i18n.ts', () => {
   it('Test translate', () => {

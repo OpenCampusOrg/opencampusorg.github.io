@@ -4,7 +4,7 @@ async function send (props: Record<string, unknown>): Promise<void> {
   const csv = format(form)
   const email = (await form).email
   if (typeof email === 'string') {
-    action(email, await csv)
+    await action(email, await csv)
   }
 }
 
@@ -15,23 +15,20 @@ async function send (props: Record<string, unknown>): Promise<void> {
  * @returns validated form
  */
 function validate (form: Record<string, unknown>, pattern: RegExp): PromiseLike<Record<string, unknown>> {
-  return new Promise<Record<string, unknown>>((resolve, reject) => {
-    for (const member in Object.values(form))
-    {
-      if (typeof member === 'string') {
-        if (member.search(pattern) !== 0) {
-          reject(form)
-        }
+  for (const member in Object.values(form))
+  {
+    if (typeof member === 'string') {
+      if (member.search(pattern) !== 0) {
+        Promise.reject(form).catch(reason => {
+          if (process.env.NODE_ENV !== 'production') {
+            console.warn('form is not valid data entry.', reason)
+          }
+          return reason
+        })
       }
     }
-    resolve(form)
-  })
-  .catch(reason => {
-    if (process.env.NODE_ENV !== 'production') {
-      console.warn('form is not valid data entry.', reason)
-    }
-    return reason
-  })
+  }
+  return Promise.resolve<Record<string, unknown>>(form)
 }
 
 /**
@@ -49,15 +46,17 @@ async function chomp(form: PromiseLike<Record<string, unknown>>): Promise<Record
  * @returns user data formated in CSV
  */
 async function format (form: PromiseLike<Record<string, unknown>>): Promise<Buffer> {
-  let csv = ''
-  for (const key in Object.keys(await form)) {
-    csv += `${key}, `
+  return form.then(form => {
+    let csv = ''
+    for (const key in Object.keys(form)) {
+      csv += `${key}, `
+    }
+    csv += '\n'
+    for (const value in Object.values(form)) {
+      csv += `${value}, `
+    }
+    return Buffer.from(csv.replace(/[.,]+$/, '\n'))
   }
-  csv += '\n'
-  for (const value in Object.values(await form)) {
-    csv += `${value}, `
-  }
-  return Buffer.from(csv.replace(/[.,]+$/, '\n'))
 }
 
 function action (mailto: string, attachment: Buffer): PromiseLike<void> {
