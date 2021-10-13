@@ -18,7 +18,7 @@ function validate (form: Record<string, unknown>, pattern: RegExp): PromiseLike<
   for (const member in Object.values(form))
   {
     if (typeof member === 'string') {
-      if (member.search(pattern) !== 0) {
+      if (member.search(pattern) !== -1) {
         Promise.reject(form).catch(reason => {
           if (process.env.NODE_ENV !== 'production') {
             console.warn('form is not valid data entry.', reason)
