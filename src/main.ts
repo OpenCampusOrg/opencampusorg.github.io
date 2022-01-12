@@ -1,8 +1,10 @@
-import { App as Vue, createApp } from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/global.scss'
 import './registerServiceWorker'
 
-Promise.resolve<Vue>(createApp(App)).then(app => {
+Promise.resolve(App)
+.then(createApp)
+.then(app => {
   app.mount('div')
 })
