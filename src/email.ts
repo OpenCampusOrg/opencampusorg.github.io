@@ -56,7 +56,7 @@ async function format (form: PromiseLike<Record<string, unknown>>): Promise<Buff
       csv += `${value}, `
     }
     return Buffer.from(csv.replace(/[.,]+$/, '\n'))
-  }
+  })
 }
 
 function action (mailto: string, attachment: Buffer): PromiseLike<void> {
