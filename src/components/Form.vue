@@ -1,77 +1,80 @@
 <template>
   <div id="newsletter" class="container position-relative text-center text-light">
     <h2>{{ content.newsletter }}</h2>
-    <form autocomplete="on" aria-label="Subscription form">
-      <label for="name" class="col-md-2" col="2">{{ content.fullname }}</label>
+    <form class="d-flex flex-column justify-content-center" autocomplete="on" aria-label="Subscription form">
+      <div class="d-flex flex-row align-items-baseline justify-content-center">
+      <label class="d-inline-flex col-md-2" for="name">{{ content.fullname }}</label>
       <input
         v-model.lazy="form.name"
-        class="col-md-4"
-        col="4"
+        class="d-inline-flex col-md-4"
         name="name"
         type="text"
         :placeholder="content.fullname"
         required
       >
-      <br>
-      <label for="birth" class="col-md-2" col="2">{{ content.birthday }}</label>
+      </div>
+      <div class="d-flex flex-row align-items-baseline justify-content-center">
+      <label class="d-inline-flex col-md-2" for="birth">{{ content.birthday }}</label>
       <input
         v-model.lazy="form.birth"
-        class="col-md-4"
-        col="4"
+        class="d-inline-flex col-md-4"
         name="birth"
         :title="content.birthday"
         type="date"
         min="1943-01-01"
         max="2007-12-31"
       >
-      <br>
-      <label for="trade" class="col-md-2" col="2">{{ content.profession }}</label>
+      </div>
+      <div class="d-flex flex-row align-items-baseline justify-content-center">
+      <label class="d-inline-flex col-md-2" for="trade">{{ content.profession }}</label>
       <input
         v-model.lazy="form.trade"
-        class="col-md-4"
-        col="4"
+        class="d-inline-flex col-md-4"
         name="trade"
         type="text"
         :placeholder="content.profession"
       >
-      <br>
-      <label for="email" class="col-md-2" col="2">{{ content.email }}</label>
+      </div>
+      <div class="d-flex flex-row align-items-baseline justify-content-center">
+      <label class="d-inline-flex col-md-2" for="email">{{ content.email }}</label>
       <input
         v-model.lazy="form.email"
-        class="col-md-4"
-        col="4"
+        class="d-inline-flex col-md-4"
         name="email"
         type="email"
         :placeholder="content.email"
         required
       >
-      <br>
-      <label for="phone" class="col-md-2" col="2">{{ content.phonenumber }}</label>
+      </div>
+      <div class="d-flex flex-row align-items-baseline justify-content-center">
+      <label class="d-inline-flex col-md-2" for="phone">{{ content.phonenumber }}</label>
       <input
         v-model.lazy="form.phone"
-        class="col-md-4"
-        col="4"
+        class="d-inline-flex col-md-4"
         name="phone"
         type="tel"
         :placeholder="content.phonenumber"
       >
-      <br>
-      <input v-model.lazy="form.funding" name="funding" type="checkbox" placeholder="checked">
-      <label>&nbsp;</label>
-      <label for="funding">
+      </div>
+      <div class="d-flex flex-row align-items-baseline justify-content-center">
+      <input
+        v-model.lazy="form.funding"
+        class="d-inline-flex"
+        name="funding" type="checkbox"
+        placeholder="checked"
+       
+      >
+      <label class="d-inline-flex" for="funding">
         {{ content.funding }}
       </label>
-      <br>
+      </div>
       <textarea
         v-model.lazy="form.message"
         type="text"
-        class="w-75 p-4 text-nowrap"
+        class="d-inline-flex align-self-center justify-content-center w-75 p-4 mt-4 mb-2 text-wrap"
         :placeholder="content.message"
       />
-      <br>
-      <br>
-      <input type="button" :value="content.send" class="btn btn-primary" @click="submit">
-      <br>
+      <input type="button" :value="content.send" class="d-inline-flex align-self-center justify-content-center w-75 btn btn-primary" @click="submit">
     </form>
   </div>
 </template>
@@ -101,9 +104,6 @@ export default defineComponent({
   },
   methods: {
     submit (): void {
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('Submit form data.')
-      }
       if (this.form !== undefined) {
         Email.send(this.form)
       }

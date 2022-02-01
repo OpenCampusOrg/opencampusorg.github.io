@@ -1,6 +1,6 @@
 <template>
   <Vanta />
-  <header class="navbar" aria-label="Navigation header">
+  <header class="navbar d-flex justify-content-space-between" aria-label="Navigation header">
     <nav class="d-flex flex-nowrap" aria-label="Homepage">
       <MDBIcon icon="tools" size="2x" iconStyle="fas"/>
       <a class="navbar-brand navbar-light" href="#">Labspace</a>

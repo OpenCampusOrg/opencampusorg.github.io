@@ -15,26 +15,8 @@ root {
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
   padding-left: 1rem;
   padding-right: .5rem;
-}
-
-form {
-  display: table;
-}
-
-form p {
-  display: table-row;
-}
-
-label {
-  display: table-cell;
-}
-
-input {
-  display: table-cell;
 }
 
 #newsletter {
@@ -62,20 +44,13 @@ section h2 {
   background: none;
 }
 
-.btn-group {
-  flex-direction: row;
-  align-items: center;
+.btn-group-vertical {
+  top: 50% !important;
 }
 
 .btn-group ::selection {
   color: none;
   background: none;
-}
-
-.btn-group-vertical {
-  flex-direction: column;
-  position: fixed !important;
-  top: 50% !important;
 }
 
 .btn-group-vertical a:hover {

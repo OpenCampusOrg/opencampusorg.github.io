@@ -1,5 +1,5 @@
 <template>
-  <MDBBtnGroup vertical aria-label="Vertical social media bar">
+  <MDBBtnGroup vertical class="flex-column position-fixed align-self-center" aria-label="Vertical social media bar">
     <MDBBtn title="twitter" href="#" class="twitter text-light" color="primary">
       <MDBIcon size="2x" icon="twitter" iconStyle="fab"/>
     </MDBBtn>
