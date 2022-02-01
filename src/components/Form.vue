@@ -59,7 +59,7 @@
       <div class="d-flex flex-row align-items-baseline justify-content-center">
       <input
         v-model.lazy="form.funding"
-        class="d-inline-flex"
+        class="d-inline-flex me-1"
         name="funding" type="checkbox"
         placeholder="checked"
        
