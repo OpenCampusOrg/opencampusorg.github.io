@@ -56,7 +56,7 @@
         :placeholder="content.phonenumber"
       >
       </div>
-      <div class="d-flex flex-row align-items-baseline justify-content-center">
+      <div class="d-flex flex-row align-items-baseline justify-content-center mt-3">
       <input
         v-model.lazy="form.funding"
         class="d-inline-flex me-1"
