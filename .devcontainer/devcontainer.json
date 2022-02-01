@@ -26,6 +26,10 @@
 		"visualstudioexptteam.vscodeintellicode"
 	],
 
+	"remoteEnv": {
+		"CHOKIDAR_USEPOLLING": "true"
+	},
+
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [ 8080 ],
 
