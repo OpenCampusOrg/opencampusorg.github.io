@@ -26,6 +26,10 @@
 		"visualstudioexptteam.vscodeintellicode"
 	],
 
+	"mounts": [
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
+	],
+
 	"remoteEnv": {
 		"CHOKIDAR_USEPOLLING": "true"
 	},
