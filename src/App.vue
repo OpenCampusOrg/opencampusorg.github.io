@@ -19,8 +19,7 @@
   </aside>
   </main>
   <footer class="position-relative text-center text-gray-400">
-  <span>&copy;</span>
-  <pre>Labspace is a name owned by Steve Huguenin and cannot be used by another hacker group.</pre>
+  <span>&copy; Labspace is a name owned by Steve Huguenin and cannot be used by another hacker group.</span>
   </footer>
 </template>
 
@@ -124,7 +123,7 @@ export default defineComponent({
           break
         }
         default: {
-          document.title = process.env.VUE_APP_NAME || 'hackerspace-lelab.github.io'
+          document.title = process.env.VUE_APP_NAME || document.URL
           break
         }
       }

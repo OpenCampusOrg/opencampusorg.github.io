@@ -1,5 +1,5 @@
 {
-  "name": "hackerspace-lelab.github.io",
+  "name": "open-campus.org",
   "version": "1.1.0",
   "private": true,
   "description": "The Labspace is a citizen initiative from Neuchâtel that aims to unite innovators, inventors and startups in order to develop and design innovative projects together.",
@@ -51,5 +51,5 @@
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
-  "short_name": "thelab.space"
+  "short_name": "OpenCampusOrg"
 }

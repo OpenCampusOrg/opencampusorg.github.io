@@ -1,4 +1,4 @@
-# hackerspace-lelab.github.io
+# open-campus.org
 
 ## Project setup
 ```
