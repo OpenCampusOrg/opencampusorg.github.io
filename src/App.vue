@@ -11,15 +11,16 @@
     @changeLang="changeLang($event)"
     />
   </header>
+  <main>
   <Content :content="content" />
   <Form :content="content" />
   <aside>
     <MediaBar />
   </aside>
+  </main>
   <footer class="position-relative text-center text-gray-400">
-    <br>
-    &copy; Labspace is a name owned by Steve Huguenin and cannot be used by another hacker group.
-    <br>
+  <span>&copy;</span>
+  <pre>Labspace is a name owned by Steve Huguenin and cannot be used by another hacker group.</pre>
   </footer>
 </template>
 
